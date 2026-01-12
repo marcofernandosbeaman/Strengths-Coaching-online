@@ -1,0 +1,206 @@
+{
+  "achiever": [
+    "What would completing this give you?",
+    "What's one thing you could finish today that would feel meaningful?",
+    "How do you know when you've done enough?",
+    "What helps you sustain momentum without burning out?"
+  ],
+  "activator": [
+    "What's stopping you from starting?",
+    "If you had to take one action right now, what would it be?",
+    "How do you decide when it's time to move?",
+    "What helps you know when to pause before acting?"
+  ],
+  "adaptability": [
+    "What's shifting right now that you're responding to?",
+    "How do you stay grounded when plans change?",
+    "What helps you balance flexibility with focus?",
+    "When does going with the flow serve you, and when doesn't it?"
+  ],
+  "analytical": [
+    "What data or evidence would help you feel more confident?",
+    "What patterns are you noticing?",
+    "How do you know when you have enough information?",
+    "What helps you move from analysis to action?"
+  ],
+  "arranger": [
+    "What needs to be rearranged here?",
+    "How could you reconfigure this to work better?",
+    "What's the most flexible version of this plan?",
+    "How do you know when the pieces are in the right place?"
+  ],
+  "belief": [
+    "What matters most to you in this situation?",
+    "How does this connect to your deeper values?",
+    "What would you not compromise on?",
+    "How do you honour your beliefs while staying open to others?"
+  ],
+  "command": [
+    "What needs to be said that hasn't been said yet?",
+    "Where do you need to take control?",
+    "How do you know when to step in and when to step back?",
+    "What helps you use your directness in a way that builds trust?"
+  ],
+  "communication": [
+    "How would you explain this to someone who's never heard it before?",
+    "What story could bring this to life?",
+    "What's the simplest way to say what you mean?",
+    "How do you know when your message has landed?"
+  ],
+  "competition": [
+    "Who or what are you measuring yourself against?",
+    "What would winning look like here?",
+    "How do you stay motivated when you're not competing?",
+    "What helps you compete in a way that lifts others up?"
+  ],
+  "connectedness": [
+    "How is this part of something bigger?",
+    "What ripple effect might this have?",
+    "How do you stay connected to meaning when things feel chaotic?",
+    "What helps you ground others in purpose?"
+  ],
+  "consistency": [
+    "What's the fairest approach here?",
+    "How would you make this work for everyone?",
+    "What rules or structures would help?",
+    "How do you balance consistency with individual needs?"
+  ],
+  "context": [
+    "What's the backstory here?",
+    "How did we get to this point?",
+    "What lessons from the past are relevant now?",
+    "How do you help others learn from history without being stuck in it?"
+  ],
+  "deliberative": [
+    "What could go wrong?",
+    "What risks haven't been considered yet?",
+    "How do you know when something is safe enough to proceed?",
+    "What helps you move from caution to confidence?"
+  ],
+  "developer": [
+    "What potential do you see in this person or situation?",
+    "What's the next step in their growth?",
+    "How do you celebrate small progress?",
+    "What helps you invest in others without losing yourself?"
+  ],
+  "discipline": [
+    "What structure would make this easier?",
+    "How could you break this into predictable steps?",
+    "What routine helps you stay on track?",
+    "How do you balance structure with spontaneity?"
+  ],
+  "empathy": [
+    "What might they be feeling right now?",
+    "How can you show them they're understood?",
+    "What helps you care for others without absorbing their emotions?",
+    "How do you know when to step in and when to give space?"
+  ],
+  "focus": [
+    "What's the most important thing right now?",
+    "What can you say no to?",
+    "How do you filter out distractions?",
+    "What helps you stay focused without becoming rigid?"
+  ],
+  "futuristic": [
+    "What could this become?",
+    "Where do you see this going?",
+    "How do you bring others along to your vision?",
+    "What helps you balance future thinking with present action?"
+  ],
+  "harmony": [
+    "What's the common ground here?",
+    "How could everyone feel heard?",
+    "What helps you find agreement without avoiding conflict?",
+    "How do you know when to push for consensus and when to move on?"
+  ],
+  "ideation": [
+    "What's a completely different way to look at this?",
+    "What connections are you making?",
+    "How do you capture your ideas before they disappear?",
+    "What helps you turn ideas into action?"
+  ],
+  "includer": [
+    "Who's not in the room that should be?",
+    "How can you make sure everyone feels welcome?",
+    "What helps you include others without overextending yourself?",
+    "How do you balance inclusion with getting things done?"
+  ],
+  "individualization": [
+    "What makes this person unique?",
+    "How could you tailor this to fit them?",
+    "What patterns do you notice in how people differ?",
+    "How do you celebrate individuality while building a team?"
+  ],
+  "input": [
+    "What are you curious about right now?",
+    "What have you learned recently that changed your thinking?",
+    "How do you organize what you collect?",
+    "What helps you know when you have enough information?"
+  ],
+  "intellection": [
+    "What are you thinking about?",
+    "What question are you wrestling with?",
+    "How do you make time to think deeply?",
+    "What helps you turn reflection into action?"
+  ],
+  "learner": [
+    "What do you want to learn next?",
+    "What's energizing about this challenge?",
+    "How do you know when you've learned enough?",
+    "What helps you apply what you learn?"
+  ],
+  "maximizer": [
+    "What's already working well?",
+    "How could you make this even better?",
+    "What strengths could you leverage more?",
+    "What helps you focus on excellence without chasing perfection?"
+  ],
+  "positivity": [
+    "What's going well?",
+    "How can you bring more energy to this?",
+    "What helps you stay positive without dismissing challenges?",
+    "How do you lift others without ignoring their struggles?"
+  ],
+  "relator": [
+    "Who do you trust to help with this?",
+    "How can you deepen this connection?",
+    "What helps you build trust with new people?",
+    "How do you balance deep relationships with broader connections?"
+  ],
+  "responsibility": [
+    "What have you committed to?",
+    "How will you follow through?",
+    "What helps you own your responsibilities without over-committing?",
+    "How do you know when to ask for help?"
+  ],
+  "restorative": [
+    "What's broken here?",
+    "How could you fix this?",
+    "What helps you solve problems without getting stuck in them?",
+    "How do you know when to move on from trying to fix something?"
+  ],
+  "self-assurance": [
+    "What do you know to be true?",
+    "How are you trusting yourself in this moment?",
+    "What helps you stay confident without closing off to others?",
+    "How do you know when to listen more and lead less?"
+  ],
+  "significance": [
+    "What impact do you want to have?",
+    "How will this matter in the long run?",
+    "What helps you feel valued?",
+    "How do you balance your need for recognition with serving others?"
+  ],
+  "strategic": [
+    "What's the best path forward?",
+    "What alternatives are you seeing?",
+    "How do you help others see the options?",
+    "What helps you choose a strategy and commit to it?"
+  ],
+  "woo": [
+    "How can you connect with them?",
+    "What helps you win people over?",
+    "How do you know when to turn on the charm and when to dial it back?",
+    "What helps you build genuine relationships, not just connections?"
+  ]
+}
