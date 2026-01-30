@@ -1,0 +1,43 @@
+export const THEME_TO_DOMAIN = {
+  achiever: "Executing",
+  activator: "Influencing",
+  adaptability: "Relationship",
+  analytical: "Strategic",
+  arranger: "Executing",
+  belief: "Executing",
+  command: "Influencing",
+  communication: "Influencing",
+  competition: "Influencing",
+  connectedness: "Relationship",
+  consistency: "Executing",
+  context: "Strategic",
+  deliberative: "Executing",
+  developer: "Relationship",
+  discipline: "Executing",
+  empathy: "Relationship",
+  focus: "Executing",
+  futuristic: "Strategic",
+  harmony: "Relationship",
+  ideation: "Strategic",
+  includer: "Relationship",
+  individualization: "Relationship",
+  input: "Strategic",
+  intellection: "Strategic",
+  learner: "Strategic",
+  maximizer: "Influencing",
+  positivity: "Relationship",
+  relator: "Relationship",
+  responsibility: "Executing",
+  restorative: "Executing",
+  selfassurance: "Influencing",
+  significance: "Influencing",
+  strategic: "Strategic",
+  woo: "Influencing"
+};
+
+export const DOMAIN_COLORS = {
+  Executing: "#6A1B9A",
+  Influencing: "#EF6C00",
+  Relationship: "#1565C0",
+  Strategic: "#2E7D32"
+};

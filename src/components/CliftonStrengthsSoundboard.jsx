@@ -2,18 +2,21 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Download, Upload, Shuffle, RotateCcw } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { STRENGTHS } from "@/data/strengths";
 import { COMMUNICATION_STYLES } from "@/data/communicationStyles";
 import { BALCONY_BASEMENT } from "@/data/balconyBasement";
-import { getStrengthColor } from "@/utils/strengthUtils";
+import { THEME_TO_DOMAIN } from "@/data/themeDomains";
+import { getStrengthColor, getThemeColourClass } from "@/utils/strengthUtils";
 import { clamp } from "@/utils/strengthUtils";
 import { generateCombinedInvestment } from "@/utils/investmentUtils";
 import { Picker } from "./Picker";
 import { DeskChannel } from "./DeskChannel";
 import { EmptyState } from "./EmptyState";
 import { InvestModal } from "./InvestModal";
+import { DominantThemesTab } from "./DominantThemesTab";
 
 export default function CliftonStrengthsSoundboard() {
   const [mode, setMode] = useLocalStorage("csb:mode", "soundboard");
@@ -127,34 +130,17 @@ export default function CliftonStrengthsSoundboard() {
           <p className="text-neutral-600 mt-2 max-w-2xl">
             Select up to five strengths, then mix the levels like a live sound desk. Click a track or drag the coloured label to set the level. Arrow keys work for fine control.
           </p>
-          <div className="mt-4 inline-flex rounded-xl border border-neutral-200 overflow-hidden">
-            <button
-              onClick={() => setMode("soundboard")}
-              className={`px-4 py-2 text-sm ${
-                mode === "soundboard" ? "bg-neutral-900 text-white" : "bg-white text-neutral-700 hover:bg-neutral-50"
-              }`}
-            >
-              Soundboard
-            </button>
-            <button
-              onClick={() => setMode("comm")}
-              className={`px-4 py-2 text-sm border-l ${
-                mode === "comm" ? "bg-neutral-900 text-white" : "bg-white text-neutral-700 hover:bg-neutral-50"
-              }`}
-            >
-              🗣️ Strengths & Communication
-            </button>
-            <button
-              onClick={() => setMode("bb")}
-              className={`px-4 py-2 text-sm border-l ${
-                mode === "bb" ? "bg-neutral-900 text-white" : "bg-white text-neutral-700 hover:bg-neutral-50"
-              }`}
-            >
-              Balconies & Basements
-            </button>
-          </div>
-          {mode === "soundboard" && (
-            <div className="mt-3 flex flex-col gap-2">
+        </header>
+
+        <Tabs defaultValue={mode} onValueChange={setMode} className="w-full">
+          <TabsList className="mb-4">
+            <TabsTrigger value="soundboard">Soundboard</TabsTrigger>
+            <TabsTrigger value="dominant">Dominant themes</TabsTrigger>
+            <TabsTrigger value="comm">🗣️ Strengths & Communication</TabsTrigger>
+            <TabsTrigger value="bb">Balconies & Basements</TabsTrigger>
+          </TabsList>
+          <TabsContent value="soundboard">
+            <div className="mb-3 flex flex-col gap-2">
               <Button className="rounded-2xl w-fit" onClick={() => setShowInvest(true)}>
                 💡 Invest in Your Strengths
               </Button>
@@ -167,30 +153,28 @@ export default function CliftonStrengthsSoundboard() {
                 </Card>
               )}
             </div>
-          )}
-        </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-1">
-            <Picker selected={selected} onToggle={toggleSelect} />
-            <div className="mt-4 flex flex-wrap items-center gap-2">
-              <Button variant="secondary" onClick={reset} className="rounded-2xl">
-                <RotateCcw className="h-4 w-4 mr-2" /> Reset levels
-              </Button>
-              <Button variant="secondary" onClick={randomise} className="rounded-2xl">
-                <Shuffle className="h-4 w-4 mr-2" /> Randomise
-              </Button>
-              <Button variant="outline" onClick={exportJSON} className="rounded-2xl">
-                <Download className="h-4 w-4 mr-2" /> Export JSON
-              </Button>
-              <Button variant="outline" onClick={importJSON} className="rounded-2xl">
-                <Upload className="h-4 w-4 mr-2" /> Import JSON
-              </Button>
-            </div>
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <Picker selected={selected} onToggle={toggleSelect} />
+                <div className="mt-4 flex flex-wrap items-center gap-2">
+                  <Button variant="secondary" onClick={reset} className="rounded-2xl">
+                    <RotateCcw className="h-4 w-4 mr-2" /> Reset levels
+                  </Button>
+                  <Button variant="secondary" onClick={randomise} className="rounded-2xl">
+                    <Shuffle className="h-4 w-4 mr-2" /> Randomise
+                  </Button>
+                  <Button variant="outline" onClick={exportJSON} className="rounded-2xl">
+                    <Download className="h-4 w-4 mr-2" /> Export JSON
+                  </Button>
+                  <Button variant="outline" onClick={importJSON} className="rounded-2xl">
+                    <Upload className="h-4 w-4 mr-2" /> Import JSON
+                  </Button>
+                </div>
+              </div>
 
-          <div className="lg:col-span-2">
-            {mode === "soundboard" ? (
+              <div className="lg:col-span-2">
+                {
               selectedDefs.length === 0 ? (
                 <EmptyState />
               ) : (
@@ -209,8 +193,25 @@ export default function CliftonStrengthsSoundboard() {
                     </motion.div>
                   ))}
                 </div>
-              )
-            ) : mode === "comm" ? (
+              )}
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="dominant">
+            <DominantThemesTab
+              strengths={STRENGTHS}
+              themeToDomain={THEME_TO_DOMAIN}
+              getThemeColourClass={getThemeColourClass}
+            />
+          </TabsContent>
+
+          <TabsContent value="comm">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <Picker selected={selected} onToggle={toggleSelect} />
+              </div>
+              <div className="lg:col-span-2">
               <div>
                 <details className="relative overflow-hidden rounded-xl border border-neutral-200 watermark">
                   <summary className="relative cursor-pointer font-semibold z-10 px-3 py-2 bg-white/60 backdrop-blur-sm">
@@ -258,7 +259,16 @@ export default function CliftonStrengthsSoundboard() {
                   )}
                 </div>
               </div>
-            ) : (
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="bb">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-1">
+                <Picker selected={selected} onToggle={toggleSelect} />
+              </div>
+              <div className="lg:col-span-2">
               <div className="space-y-3">
                 {selectedDefs.length === 0 ? (
                   <EmptyState />
@@ -338,9 +348,10 @@ export default function CliftonStrengthsSoundboard() {
                   </>
                 )}
               </div>
-            )}
-          </div>
-        </div>
+              </div>
+            </div>
+          </TabsContent>
+        </Tabs>
       </div>
     </div>
   );

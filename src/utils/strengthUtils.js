@@ -8,6 +8,23 @@ export function getStrengthColor(key) {
   return domainColours[key] || "#999";
 }
 
+export function getThemeColourClass(themeKey, domain) {
+  // Map hex colors to Tailwind fill classes for SVG
+  const executing = "#6A1B9A";
+  const influencing = "#EF6C00";
+  const relationship = "#1565C0";
+  const strategic = "#2E7D32";
+
+  const color = getStrengthColor(themeKey);
+  
+  if (color === executing) return "fill-purple-800";
+  if (color === influencing) return "fill-orange-700";
+  if (color === relationship) return "fill-blue-700";
+  if (color === strategic) return "fill-green-700";
+  
+  return "fill-neutral-400";
+}
+
 export function clamp(v, min = 0, max = 100) {
   return Math.min(Math.max(v, min), max);
 }
