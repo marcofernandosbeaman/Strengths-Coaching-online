@@ -1,0 +1,473 @@
+{
+  "achiever": {
+    "drivers": [
+      "hard work",
+      "stamina",
+      "daily progress"
+    ],
+    "likes": [
+      "clear goals",
+      "momentum",
+      "measurable progress"
+    ],
+    "brings": "a steady drive to keep moving and accomplishing",
+    "canOverdo": "pushing too hard or finding it difficult to switch off"
+  },
+  "activator": {
+    "drivers": [
+      "action",
+      "starting",
+      "forward motion"
+    ],
+    "likes": [
+      "quick decisions",
+      "movement",
+      "visible progress"
+    ],
+    "brings": "energy that turns ideas into action",
+    "canOverdo": "moving before others are ready or before thinking is complete"
+  },
+  "adaptability": {
+    "drivers": [
+      "the present moment",
+      "flexibility",
+      "responding to what is"
+    ],
+    "likes": [
+      "variety",
+      "change",
+      "working without rigid plans"
+    ],
+    "brings": "an ability to stay open and responsive as things shift",
+    "canOverdo": "avoiding long-term planning or commitment"
+  },
+  "analytical": {
+    "drivers": [
+      "evidence",
+      "logic",
+      "cause and effect"
+    ],
+    "likes": [
+      "data",
+      "clear reasoning",
+      "objective thinking"
+    ],
+    "brings": "clarity through careful thinking and evaluation",
+    "canOverdo": "over-analysing or slowing decisions unnecessarily"
+  },
+  "arranger": {
+    "drivers": [
+      "complexity",
+      "coordination",
+      "flexible systems"
+    ],
+    "likes": [
+      "juggling resources",
+      "moving parts",
+      "dynamic plans"
+    ],
+    "brings": "an ability to organise people and resources effectively",
+    "canOverdo": "constant reworking that unsettles others"
+  },
+  "belief": {
+    "drivers": [
+      "values",
+      "purpose",
+      "meaning"
+    ],
+    "likes": [
+      "integrity",
+      "clear principles",
+      "cause-driven work"
+    ],
+    "brings": "a strong moral compass and sense of why",
+    "canOverdo": "appearing inflexible when values are challenged"
+  },
+  "command": {
+    "drivers": [
+      "control",
+      "clarity",
+      "taking charge"
+    ],
+    "likes": [
+      "directness",
+      "decisiveness",
+      "clear authority"
+    ],
+    "brings": "confidence and presence in moments of uncertainty",
+    "canOverdo": "coming across as forceful or intimidating"
+  },
+  "communication": {
+    "drivers": [
+      "expression",
+      "connection through words",
+      "clarity"
+    ],
+    "likes": [
+      "stories",
+      "dialogue",
+      "being understood"
+    ],
+    "brings": "an ability to give shape and meaning through language",
+    "canOverdo": "talking when listening would serve better"
+  },
+  "competition": {
+    "drivers": [
+      "comparison",
+      "winning",
+      "external measures"
+    ],
+    "likes": [
+      "scoreboards",
+      "benchmarks",
+      "clear results"
+    ],
+    "brings": "motivation through challenge and comparison",
+    "canOverdo": "focusing too much on winning rather than learning"
+  },
+  "connectedness": {
+    "drivers": [
+      "meaningful links",
+      "interdependence",
+      "purpose"
+    ],
+    "likes": [
+      "shared experiences",
+      "big-picture thinking",
+      "belonging"
+    ],
+    "brings": "a sense of connection between people and events",
+    "canOverdo": "over-attributing meaning or avoiding difficult choices"
+  },
+  "consistency": {
+    "drivers": [
+      "fairness",
+      "clear rules",
+      "reliable standards"
+    ],
+    "likes": [
+      "structure",
+      "policies",
+      "predictability"
+    ],
+    "brings": "a pull towards clarity, fairness, and dependable ways of working",
+    "canOverdo": "becoming rigid or frustrated by exceptions"
+  },
+  "context": {
+    "drivers": [
+      "the past",
+      "patterns over time",
+      "learning from history"
+    ],
+    "likes": [
+      "stories",
+      "background",
+      "how things came to be"
+    ],
+    "brings": "perspective by grounding decisions in what has gone before",
+    "canOverdo": "staying rooted in the past when change is needed"
+  },
+  "deliberative": {
+    "drivers": [
+      "care",
+      "risk awareness",
+      "sound judgement"
+    ],
+    "likes": [
+      "thinking things through",
+      "preparedness",
+      "minimising risk"
+    ],
+    "brings": "a thoughtful and cautious approach to decisions",
+    "canOverdo": "slowing progress through over-caution"
+  },
+  "developer": {
+    "drivers": [
+      "growth",
+      "potential",
+      "progress in others"
+    ],
+    "likes": [
+      "learning curves",
+      "small improvements",
+      "coaching moments"
+    ],
+    "brings": "belief in people and patience with development",
+    "canOverdo": "investing in growth when it may not be wanted"
+  },
+  "discipline": {
+    "drivers": [
+      "order",
+      "routine",
+      "structure"
+    ],
+    "likes": [
+      "plans",
+      "predictable systems",
+      "clear expectations"
+    ],
+    "brings": "reliability and order through well-designed routines",
+    "canOverdo": "struggling when things feel messy or unplanned"
+  },
+  "empathy": {
+    "drivers": [
+      "emotional awareness",
+      "understanding others",
+      "connection"
+    ],
+    "likes": [
+      "tuning into feelings",
+      "emotional cues",
+      "supportive spaces"
+    ],
+    "brings": "an intuitive sense of what others are feeling",
+    "canOverdo": "absorbing emotions that are not theirs to carry"
+  },
+  "focus": {
+    "drivers": [
+      "direction",
+      "priorities",
+      "end goals"
+    ],
+    "likes": [
+      "clarity",
+      "boundaries",
+      "staying on track"
+    ],
+    "brings": "the ability to concentrate energy on what matters most",
+    "canOverdo": "ignoring useful distractions or alternative ideas"
+  },
+  "futuristic": {
+    "drivers": [
+      "possibility",
+      "vision",
+      "what could be"
+    ],
+    "likes": [
+      "ideas about the future",
+      "innovation",
+      "long-term thinking"
+    ],
+    "brings": "hope and inspiration through a compelling view of the future",
+    "canOverdo": "losing connection with present realities"
+  },
+  "harmony": {
+    "drivers": [
+      "agreement",
+      "peace",
+      "common ground"
+    ],
+    "likes": [
+      "calm discussions",
+      "practical compromise",
+      "stability"
+    ],
+    "brings": "a calming influence that reduces unnecessary conflict",
+    "canOverdo": "avoiding healthy debate or difficult conversations"
+  },
+  "ideation": {
+    "drivers": [
+      "ideas",
+      "novelty",
+      "connections between concepts"
+    ],
+    "likes": [
+      "brainstorming",
+      "creative thinking",
+      "new angles"
+    ],
+    "brings": "fresh perspectives and original ideas",
+    "canOverdo": "generating ideas without moving to action"
+  },
+  "includer": {
+    "drivers": [
+      "belonging",
+      "fair access",
+      "openness"
+    ],
+    "likes": [
+      "bringing people in",
+      "shared participation",
+      "community"
+    ],
+    "brings": "a sense of welcome and inclusion",
+    "canOverdo": "over-extending invitations or diluting focus"
+  },
+  "individualization": {
+    "drivers": [
+      "uniqueness",
+      "differences",
+      "personalisation"
+    ],
+    "likes": [
+      "tailored approaches",
+      "one-to-one understanding"
+    ],
+    "brings": "insight into what makes each person distinct",
+    "canOverdo": "over-customising where consistency is needed"
+  },
+  "input": {
+    "drivers": [
+      "collecting",
+      "curiosity",
+      "useful resources"
+    ],
+    "likes": [
+      "information",
+      "ideas",
+      "tools"
+    ],
+    "brings": "a rich store of knowledge and resources",
+    "canOverdo": "gathering without applying"
+  },
+  "intellection": {
+    "drivers": [
+      "thinking",
+      "reflection",
+      "inner dialogue"
+    ],
+    "likes": [
+      "time to think",
+      "concepts",
+      "deep questions"
+    ],
+    "brings": "depth and insight through careful reflection",
+    "canOverdo": "withdrawing into thinking at the expense of action"
+  },
+  "learner": {
+    "drivers": [
+      "learning",
+      "improvement",
+      "the learning process"
+    ],
+    "likes": [
+      "new skills",
+      "progress",
+      "stretch"
+    ],
+    "brings": "energy and enthusiasm for growth and development",
+    "canOverdo": "staying in learning mode instead of applying knowledge"
+  },
+  "maximizer": {
+    "drivers": [
+      "excellence",
+      "strengths",
+      "optimisation"
+    ],
+    "likes": [
+      "refinement",
+      "high standards",
+      "doing things well"
+    ],
+    "brings": "a focus on making good things great",
+    "canOverdo": "neglecting what is adequate but necessary"
+  },
+  "positivity": {
+    "drivers": [
+      "hope",
+      "enthusiasm",
+      "energy"
+    ],
+    "likes": [
+      "optimism",
+      "uplifting environments",
+      "encouragement"
+    ],
+    "brings": "emotional lift and confidence",
+    "canOverdo": "minimising genuine concerns or difficulties"
+  },
+  "relator": {
+    "drivers": [
+      "trust",
+      "depth",
+      "close relationships"
+    ],
+    "likes": [
+      "meaningful conversations",
+      "loyalty",
+      "authenticity"
+    ],
+    "brings": "strong, trusting relationships over time",
+    "canOverdo": "appearing reserved or slow to open up"
+  },
+  "responsibility": {
+    "drivers": [
+      "ownership",
+      "commitment",
+      "dependability"
+    ],
+    "likes": [
+      "keeping promises",
+      "being relied upon"
+    ],
+    "brings": "trust through follow-through and accountability",
+    "canOverdo": "taking on too much or struggling to say no"
+  },
+  "restorative": {
+    "drivers": [
+      "problem-solving",
+      "fixing what is broken"
+    ],
+    "likes": [
+      "challenges",
+      "diagnosing issues",
+      "solutions"
+    ],
+    "brings": "confidence in tackling and resolving problems",
+    "canOverdo": "focusing on problems rather than possibilities"
+  },
+  "selfassurance": {
+    "drivers": [
+      "inner confidence",
+      "self-belief",
+      "independence"
+    ],
+    "likes": [
+      "autonomy",
+      "trusting instincts",
+      "decisive action"
+    ],
+    "brings": "a calm certainty in their own judgement",
+    "canOverdo": "appearing dismissive of others\u2019 input"
+  },
+  "significance": {
+    "drivers": [
+      "impact",
+      "recognition",
+      "making a difference"
+    ],
+    "likes": [
+      "visibility",
+      "meaningful contribution"
+    ],
+    "brings": "a desire to do work that truly matters",
+    "canOverdo": "seeking validation too strongly"
+  },
+  "strategic": {
+    "drivers": [
+      "patterns",
+      "options",
+      "best routes forward"
+    ],
+    "likes": [
+      "complex problems",
+      "choice",
+      "anticipation"
+    ],
+    "brings": "clarity through seeing pathways and possibilities",
+    "canOverdo": "staying in planning rather than execution"
+  },
+  "woo": {
+    "drivers": [
+      "connection",
+      "first impressions",
+      "new relationships"
+    ],
+    "likes": [
+      "meeting people",
+      "starting conversations"
+    ],
+    "brings": "energy in forming quick connections",
+    "canOverdo": "prioritising breadth over depth"
+  }
+}
