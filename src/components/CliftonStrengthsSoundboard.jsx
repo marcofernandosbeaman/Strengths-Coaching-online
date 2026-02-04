@@ -17,6 +17,8 @@ import { DeskChannel } from "./DeskChannel";
 import { EmptyState } from "./EmptyState";
 import { InvestModal } from "./InvestModal";
 import { DominantThemesTab } from "./DominantThemesTab";
+import { SelectedThemeChips } from "./SelectedThemeChips";
+import { withTrademark } from "@/lib/withTrademark";
 
 export default function CliftonStrengthsSoundboard() {
   const [mode, setMode] = useLocalStorage("csb:mode", "soundboard");
@@ -157,6 +159,18 @@ export default function CliftonStrengthsSoundboard() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-1">
                 <Picker selected={selected} onToggle={toggleSelect} />
+                {selected.length > 0 && (
+                  <div className="mt-4">
+                    <SelectedThemeChips
+                      title="Selected themes"
+                      items={selectedDefs.map((s) => ({
+                        key: s.key,
+                        label: withTrademark(s.name),
+                      }))}
+                      onRemove={(k) => toggleSelect(k)}
+                    />
+                  </div>
+                )}
                 <div className="mt-4 flex flex-wrap items-center gap-2">
                   <Button variant="secondary" onClick={reset} className="rounded-2xl">
                     <RotateCcw className="h-4 w-4 mr-2" /> Reset levels
@@ -183,7 +197,7 @@ export default function CliftonStrengthsSoundboard() {
                     <motion.div key={s.key} initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
                       <DeskChannel
                         themeKey={s.key}
-                        name={s.name}
+                        name={withTrademark(s.name)}
                         blurb={s.blurb}
                         color={getStrengthColor(s.key)}
                         value={levels[s.key] ?? 50}
@@ -210,6 +224,18 @@ export default function CliftonStrengthsSoundboard() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-1">
                 <Picker selected={selected} onToggle={toggleSelect} />
+                {selected.length > 0 && (
+                  <div className="mt-4">
+                    <SelectedThemeChips
+                      title="Selected themes"
+                      items={selectedDefs.map((s) => ({
+                        key: s.key,
+                        label: withTrademark(s.name),
+                      }))}
+                      onRemove={(k) => toggleSelect(k)}
+                    />
+                  </div>
+                )}
               </div>
               <div className="lg:col-span-2">
               <div>
@@ -244,7 +270,7 @@ export default function CliftonStrengthsSoundboard() {
                             className="pointer-events-none absolute inset-0 rounded-2xl"
                             style={{ background: "radial-gradient(circle at 50% 15%, rgba(255,255,255,0.55), rgba(255,255,255,0) 65%)" }}
                           />
-                          <div className="text-base font-bold leading-tight">{s.name}</div>
+                          <div className="text-base font-bold leading-tight">{withTrademark(s.name)}</div>
                           <p className="text-sm opacity-95 mt-1">{COMMUNICATION_STYLES[s.key] ?? "No communication style available."}</p>
                           <div className="mt-3 text-xs text-white/90">
                             <ul className="list-disc list-inside space-y-1">
@@ -267,6 +293,18 @@ export default function CliftonStrengthsSoundboard() {
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
               <div className="lg:col-span-1">
                 <Picker selected={selected} onToggle={toggleSelect} />
+                {selected.length > 0 && (
+                  <div className="mt-4">
+                    <SelectedThemeChips
+                      title="Selected themes"
+                      items={selectedDefs.map((s) => ({
+                        key: s.key,
+                        label: withTrademark(s.name),
+                      }))}
+                      onRemove={(k) => toggleSelect(k)}
+                    />
+                  </div>
+                )}
               </div>
               <div className="lg:col-span-2">
               <div className="space-y-3">
@@ -319,7 +357,7 @@ export default function CliftonStrengthsSoundboard() {
                             className="pointer-events-none absolute inset-0 rounded-2xl"
                             style={{ background: "radial-gradient(circle at 50% 15%, rgba(255,255,255,0.55), rgba(255,255,255,0) 65%)" }}
                           />
-                          <div className="text-base font-bold leading-tight">{s.name}</div>
+                          <div className="text-base font-bold leading-tight">{withTrademark(s.name)}</div>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-2 border-t border-white/30 pt-3">
                             <div className="bg-black/20 rounded-xl p-3 order-1">
                               <div className="text-xs font-semibold bg-red-200/20 text-red-800 rounded px-1">
