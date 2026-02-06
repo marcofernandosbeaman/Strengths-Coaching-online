@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Search } from "lucide-react";
 import { STRENGTHS } from "@/data/strengths";
+import { withTrademark } from "@/lib/withTrademark";
 
 export function Picker({ selected, onToggle, max = 5 }) {
   const [query, setQuery] = useState("");
@@ -27,7 +28,7 @@ export function Picker({ selected, onToggle, max = 5 }) {
             className="pl-9"
           />
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        <div className="grid gap-2" style={{ gridTemplateColumns: 'repeat(auto-fill, minmax(160px, 1fr))' }}>
           {filtered.map((s) => {
             const selectedNow = isSelected(s.key);
             const disabled = !selectedNow && !canAddMore;
@@ -36,14 +37,14 @@ export function Picker({ selected, onToggle, max = 5 }) {
                 key={s.key}
                 onClick={() => onToggle(s.key)}
                 disabled={disabled}
-                className={`flex items-center gap-2 rounded-xl border px-3 py-2 text-left transition active:scale-[.99] ${
+                className={`flex items-start gap-2 rounded-xl border px-3 py-2 text-left transition active:scale-[.99] min-h-[42px] ${
                   selectedNow
                     ? "border-neutral-800 bg-neutral-900 text-white"
                     : "border-neutral-200 hover:bg-neutral-50"
                 } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
               >
-                <Checkbox checked={selectedNow} className={selectedNow ? "border-white" : ""} />
-                <span className="text-sm">{s.name}</span>
+                <Checkbox checked={selectedNow} className={selectedNow ? "border-white shrink-0 mt-0.5" : "shrink-0 mt-0.5"} />
+                <span className="text-sm leading-snug break-words">{withTrademark(s.name)}</span>
               </button>
             );
           })}
@@ -54,7 +55,7 @@ export function Picker({ selected, onToggle, max = 5 }) {
             if (!s) return null;
             return (
               <Badge key={k} className="rounded-full px-3 py-1 text-xs" variant="secondary">
-                {s.name}
+                {withTrademark(s.name)}
               </Badge>
             );
           })}

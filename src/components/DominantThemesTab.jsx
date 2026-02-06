@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
 import { SelectedThemeChips } from "@/components/SelectedThemeChips";
 import { withTrademark } from "@/lib/withTrademark";
+import { Picker } from "@/components/Picker";
 import themeTraits from "@/data/theme-traits.json";
 import { toPng } from "html-to-image";
 import jsPDF from "jspdf";
@@ -72,8 +73,7 @@ export function DominantThemesTab(props) {
   }, [strengths]);
 
   // Session-only state (NO localStorage)
-  const [slots, setSlots] = React.useState(Array(10).fill(null));
-  const [activeSlot, setActiveSlot] = React.useState(0);
+  const [selected, setSelected] = React.useState([]);
   const [showDomainColours, setShowDomainColours] = React.useState(true);
   const [mode, setMode] = React.useState("off");
   const [pair, setPair] = React.useState([]); // max 2 from selected 10
@@ -81,36 +81,25 @@ export function DominantThemesTab(props) {
   // Notes are session-only, stored per pair
   const [pairNotes, setPairNotes] = React.useState({});
 
-  const selectedKeys = React.useMemo(
-    () => slots.filter((k) => Boolean(k)),
-    [slots],
-  );
-
+  const selectedKeys = selected;
   const allTenSelected = selectedKeys.length === 10;
 
   function clearAll() {
-    setSlots(Array(10).fill(null));
-    setActiveSlot(0);
+    setSelected([]);
     setMode("off");
     setPair([]);
     setPairNotes({});
   }
 
-  function removeFromSlots(themeKey) {
-    setSlots((prev) => prev.map((k) => (k === themeKey ? null : k)));
-    setPair((prev) => prev.filter((k) => k !== themeKey));
-  }
-
-  function assignToActiveSlot(themeKey) {
-    setSlots((prev) => {
-      // prevent duplicates
-      if (prev.includes(themeKey)) return prev;
-      const next = [...prev];
-      next[activeSlot] = themeKey;
-      // move active slot to next empty if any
-      const nextEmpty = next.findIndex((k) => !k);
-      if (nextEmpty >= 0) setActiveSlot(nextEmpty);
-      return next;
+  function toggleSelect(key) {
+    setSelected((prev) => {
+      if (prev.includes(key)) {
+        // Remove from pair if it was selected for exploration
+        setPair((p) => p.filter((k) => k !== key));
+        return prev.filter((k) => k !== key);
+      }
+      if (prev.length >= 10) return prev;
+      return [...prev, key];
     });
   }
 
@@ -177,12 +166,12 @@ export function DominantThemesTab(props) {
     };
   }, [mode, pair, strengthByKey, pairNotes, allTenSelected, selectedKeys]);
 
-  // Wheel sizing (make it BIG)
-  const size = 860; // big on purpose
+  // Wheel sizing
+  const size = 600;
   const cx = size / 2;
   const cy = size / 2;
-  const rOuter = 395;
-  const rInner = 240;
+  const rOuter = 275;
+  const rInner = 170;
   const segmentAngle = 360 / 10;
 
   const wheelRef = React.useRef(null);
@@ -273,68 +262,21 @@ export function DominantThemesTab(props) {
   }
 
   // UI blocks
-  const selectedChips = (
+  const selectedChips = selectedKeys.length > 0 ? (
     <SelectedThemeChips
       title="Selected themes"
-      items={selectedKeys.map((k) => {
+      items={selectedKeys.map((k, idx) => {
         const s = strengthByKey.get(k);
         return {
           key: k,
           label: s ? withTrademark(s.name) : k,
+          badgeText: `#${idx + 1}`,
         };
       })}
-      onRemove={(k) => removeFromSlots(k)}
+      onRemove={(k) => toggleSelect(k)}
     />
-  );
+  ) : null;
 
-  const rankedSlots = (
-    <div className="grid gap-2">
-      <div className="flex items-center justify-between">
-        <div className="text-sm font-semibold">Your top 10 (ranked)</div>
-        <Badge variant="secondary">{selectedKeys.length}/10</Badge>
-      </div>
-      <div className="grid grid-cols-5 gap-2">
-        {Array.from({ length: 10 }).map((_, i) => {
-          const key = slots[i];
-          const s = key ? strengthByKey.get(key) : null;
-          const isActive = i === activeSlot;
-          return (
-            <button
-              key={i}
-              type="button"
-              onClick={() => setActiveSlot(i)}
-              className={[
-                "rounded-xl border px-2 py-2 text-left transition bg-white",
-                isActive ? "border-black/60 shadow-sm" : "border-black/10",
-              ].join(" ")}
-              title={`Slot ${i + 1}`}
-            >
-              <div className="text-xs font-semibold opacity-70">#{i + 1}</div>
-              <div className="mt-1 text-xs leading-snug">
-                {s ? (
-                  withTrademark(s.name)
-                ) : (
-                  <span className="opacity-50">Empty</span>
-                )}
-              </div>
-            </button>
-          );
-        })}
-      </div>
-      <div className="flex items-center justify-between gap-3">
-        <div className="flex items-center gap-2">
-          <span className="text-sm opacity-80">Domain colours</span>
-          <Switch
-            checked={showDomainColours}
-            onCheckedChange={setShowDomainColours}
-          />
-        </div>
-        <Button variant="outline" onClick={clearAll}>
-          Clear all
-        </Button>
-      </div>
-    </div>
-  );
 
   const modeToggle = (
     <Card className="rounded-2xl border-black/10">
@@ -414,48 +356,6 @@ export function DominantThemesTab(props) {
     </Card>
   );
 
-  const themeTiles = (
-    <div className="mt-4">
-      <div className="text-sm font-semibold">Choose your themes</div>
-      <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-3">
-        {strengths.map((s) => {
-          const isChosen = slots.includes(s.key);
-          const base =
-            "rounded-2xl border px-3 py-3 text-left transition select-none";
-          const chosen =
-            "border-black/30 shadow-sm bg-gradient-to-b from-white to-black/[0.02]";
-          const unchosen =
-            "border-black/10 hover:border-black/20 hover:shadow-sm bg-gradient-to-b from-white to-black/[0.02]";
-          return (
-            <button
-              key={s.key}
-              type="button"
-              className={[base, isChosen ? chosen : unchosen].join(" ")}
-              onClick={() => {
-                if (isChosen) removeFromSlots(s.key);
-                else assignToActiveSlot(s.key);
-              }}
-              title="Click to assign to the active slot"
-            >
-              <div className="flex items-start justify-between gap-2">
-                <div className="text-sm font-semibold leading-snug">
-                  {withTrademark(s.name)}
-                </div>
-                {isChosen ? (
-                  <Badge variant="secondary" className="shrink-0">
-                    #{slots.findIndex((k) => k === s.key) + 1}
-                  </Badge>
-                ) : null}
-              </div>
-              <div className="mt-2 text-xs opacity-70 line-clamp-2">
-                {getTraits(s.key)?.brings ?? s.blurb}
-              </div>
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
 
   function renderCentrePanel() {
     if (mode === "off") return null;
@@ -573,7 +473,7 @@ export function DominantThemesTab(props) {
   function renderWheel() {
     if (!allTenSelected) {
       return (
-        <div className="flex items-center justify-center h-[520px]">
+        <div className="flex items-center justify-center h-[600px]">
           <div className="text-center max-w-sm">
             <div className="text-lg font-semibold">Dominant themes</div>
             <div className="text-sm opacity-80 mt-1">
@@ -585,7 +485,7 @@ export function DominantThemesTab(props) {
     }
 
     return (
-      <div ref={wheelRef} className="relative w-[860px] h-[860px]">
+      <div ref={wheelRef} className="relative w-[600px] h-[600px]">
         <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`}>
           <defs>
             <filter id="segShadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -608,7 +508,7 @@ export function DominantThemesTab(props) {
               <stop offset="100%" stopColor="white" stopOpacity="0" />
             </radialGradient>
           </defs>
-          {slots.map((themeKey, idx) => {
+          {selected.map((themeKey, idx) => {
             if (!themeKey) return null;
             const s0 = strengthByKey.get(themeKey);
             const label = s0 ? withTrademark(s0.name) : themeKey;
@@ -673,7 +573,7 @@ export function DominantThemesTab(props) {
                   textAnchor="middle"
                   dominantBaseline="middle"
                   className="select-none"
-                  style={{ fontSize: 14, fontWeight: 750 }}
+                  style={{ fontSize: 11, fontWeight: 750 }}
                   fill={showDomainColours ? "white" : "#111"}
                   pointerEvents="none"
                 >
@@ -695,13 +595,13 @@ export function DominantThemesTab(props) {
               </g>
             );
           })}
-          <circle cx={cx} cy={cy} r={rInner - 26} className="fill-white" />
+          <circle cx={cx} cy={cy} r={rInner - 20} className="fill-white" />
         </svg>
         {/* Centre panel */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[340px] max-h-[340px] pointer-events-auto">
-            <Card className="rounded-2xl shadow-sm bg-white">
-              <CardContent className="pt-4 max-h-[340px] overflow-y-auto bg-white">
+          <div className="w-[280px] max-h-[280px] pointer-events-auto">
+            <Card className="rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-neutral-200/80 bg-white/95 backdrop-blur-sm">
+              <CardContent className="pt-4 pb-4 max-h-[280px] overflow-y-auto bg-gradient-to-b from-white to-neutral-50/30">
                 {renderCentrePanel()}
               </CardContent>
             </Card>
@@ -744,10 +644,21 @@ export function DominantThemesTab(props) {
           <div className="grid gap-6 mt-6 lg:grid-cols-2">
             {/* Left */}
             <div className="grid gap-4">
-              {rankedSlots}
+              <Picker selected={selected} onToggle={toggleSelect} max={10} />
               {selectedChips}
+              <div className="flex items-center justify-between gap-3">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm opacity-80">Domain colours</span>
+                  <Switch
+                    checked={showDomainColours}
+                    onCheckedChange={setShowDomainColours}
+                  />
+                </div>
+                <Button variant="outline" onClick={clearAll}>
+                  Clear all
+                </Button>
+              </div>
               {modeToggle}
-              {themeTiles}
             </div>
             {/* Right */}
             <div className="flex items-center justify-center">
