@@ -18,7 +18,7 @@ export function Picker({ selected, onToggle, max = 5 }) {
 
   return (
     <Card className="rounded-2xl border-neutral-200">
-      <CardContent className="space-y-3">
+      <CardContent className="space-y-3 pt-4">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-neutral-500" />
           <Input
