@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { SelectedThemeChips } from "@/components/SelectedThemeChips";
 import { withTrademark } from "@/lib/withTrademark";
 import { Picker } from "@/components/Picker";
+import { getStrengthColor } from "@/utils/strengthUtils";
 import themeTraits from "@/data/theme-traits.json";
 import { toPng } from "html-to-image";
 import jsPDF from "jspdf";
@@ -175,15 +176,29 @@ export function DominantThemesTab(props) {
   const segmentAngle = 360 / 10;
 
   const wheelRef = React.useRef(null);
+  const [isCapturing, setIsCapturing] = React.useState(false);
 
   async function downloadInsightsPdf() {
     if (!wheelRef.current || !allTenSelected) return;
 
-    // Capture wheel as image
+    // Hide center panel during capture
+    setIsCapturing(true);
+    
+    // Wait for React to update DOM
+    await new Promise(resolve => setTimeout(resolve, 100));
+
+    // Capture wheel as image with proper color handling
     const dataUrl = await toPng(wheelRef.current, {
       cacheBust: true,
       pixelRatio: 2,
+      backgroundColor: '#ffffff',
+      style: {
+        transform: 'scale(1)',
+      }
     });
+
+    // Show center panel again
+    setIsCapturing(false);
 
     // Collect explored pairs with notes (client mode notes only)
     const pairsWithNotes = Object.entries(pairNotes)
@@ -518,12 +533,13 @@ export function DominantThemesTab(props) {
               s0?.domain ??
               (themeToDomain ? themeToDomain[themeKey] : undefined);
 
-            const fillClass = showDomainColours
-              ? getThemeColourClass(themeKey, domain)
-              : "fill-neutral-200";
-            const strokeClass = showDomainColours
-              ? "stroke-white/70"
-              : "stroke-neutral-300";
+            // Use inline styles for proper color capture in PDF
+            const fillColor = showDomainColours
+              ? getStrengthColor(themeKey)
+              : "#e5e5e5"; // neutral-200
+            const strokeColor = showDomainColours
+              ? "rgba(255, 255, 255, 0.7)"
+              : "#d4d4d4"; // neutral-300
 
             const pathD = arcPath(cx, cy, rOuter, rInner, start, end);
             const labelPos = segmentMidpoint(
@@ -539,7 +555,8 @@ export function DominantThemesTab(props) {
               <g key={`${themeKey}-${idx}`}>
                 <path
                   d={pathD}
-                  className={`${fillClass} ${strokeClass}`}
+                  fill={fillColor}
+                  stroke={strokeColor}
                   strokeWidth={2}
                   filter="url(#segShadow)"
                 />
@@ -561,7 +578,8 @@ export function DominantThemesTab(props) {
                 {isPicked ? (
                   <path
                     d={pathD}
-                    className="fill-transparent stroke-black/35"
+                    fill="transparent"
+                    stroke="rgba(0, 0, 0, 0.35)"
                     strokeWidth={7}
                     pointerEvents="none"
                   />
@@ -595,18 +613,24 @@ export function DominantThemesTab(props) {
               </g>
             );
           })}
-          <circle cx={cx} cy={cy} r={rInner - 20} className="fill-white" />
+          <circle cx={cx} cy={cy} r={rInner - 20} fill="#ffffff" />
         </svg>
-        {/* Centre panel */}
+        {/* Centre panel - hidden during PDF capture */}
+        {!isCapturing && (
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="w-[280px] max-h-[280px] pointer-events-auto">
+          <div 
+            className={`max-h-[350px] pointer-events-auto transition-all duration-300 ${
+              !centre || centre.state === 'pick' ? 'w-[280px]' : 'w-[450px]'
+            }`}
+          >
             <Card className="rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-neutral-200/80 bg-white/95 backdrop-blur-sm">
-              <CardContent className="pt-4 pb-4 max-h-[280px] overflow-y-auto bg-gradient-to-b from-white to-neutral-50/30">
+              <CardContent className="pt-4 pb-4 max-h-[350px] overflow-y-auto bg-gradient-to-b from-white to-neutral-50/30">
                 {renderCentrePanel()}
               </CardContent>
             </Card>
           </div>
         </div>
+        )}
       </div>
     );
   }
@@ -646,22 +670,24 @@ export function DominantThemesTab(props) {
             <div className="grid gap-4">
               <Picker selected={selected} onToggle={toggleSelect} max={10} />
               {selectedChips}
-              <div className="flex items-center justify-between gap-3">
-                <div className="flex items-center gap-2">
-                  <span className="text-sm opacity-80">Domain colours</span>
-                  <Switch
-                    checked={showDomainColours}
-                    onCheckedChange={setShowDomainColours}
-                  />
-                </div>
-                <Button variant="outline" onClick={clearAll}>
-                  Clear all
-                </Button>
-              </div>
-              {modeToggle}
             </div>
             {/* Right */}
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col gap-4 items-center pt-4">
+              <div className="w-full max-w-[600px] grid gap-4">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm opacity-80">Domain colours</span>
+                    <Switch
+                      checked={showDomainColours}
+                      onCheckedChange={setShowDomainColours}
+                    />
+                  </div>
+                  <Button variant="outline" onClick={clearAll}>
+                    Clear all
+                  </Button>
+                </div>
+                {modeToggle}
+              </div>
               {renderWheel()}
             </div>
           </div>
