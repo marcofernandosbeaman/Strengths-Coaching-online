@@ -18,6 +18,7 @@ import { EmptyState } from "./EmptyState";
 import { InvestModal } from "./InvestModal";
 import { DominantThemesTab } from "./DominantThemesTab";
 import { SelectedThemeChips } from "./SelectedThemeChips";
+import { ChallengeToClarityTab } from "./ChallengeToClarityTab";
 import { withTrademark } from "@/lib/withTrademark";
 
 export default function CliftonStrengthsSoundboard() {
@@ -159,11 +160,12 @@ export default function CliftonStrengthsSoundboard() {
         </header>
 
         <Tabs defaultValue={mode} onValueChange={setMode} className="w-full">
-          <TabsList className="mb-4">
+          <TabsList className="mb-4 flex h-auto min-h-10 flex-wrap justify-start gap-1 py-1">
             <TabsTrigger value="soundboard">Soundboard</TabsTrigger>
             <TabsTrigger value="dominant">Dominant themes</TabsTrigger>
             <TabsTrigger value="comm">🗣️ Strengths & Communication</TabsTrigger>
             <TabsTrigger value="bb">Balconies & Basements</TabsTrigger>
+            <TabsTrigger value="challenge">Challenge to Clarity</TabsTrigger>
           </TabsList>
           <TabsContent value="soundboard">
             <div className="mb-3 flex flex-col gap-2">
@@ -508,6 +510,10 @@ export default function CliftonStrengthsSoundboard() {
                 </div>
               </div>
             </div>
+          </TabsContent>
+
+          <TabsContent value="challenge">
+            <ChallengeToClarityTab />
           </TabsContent>
         </Tabs>
       </div>
