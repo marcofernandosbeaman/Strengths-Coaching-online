@@ -8,34 +8,38 @@ import { SelectedThemeChips } from "./SelectedThemeChips";
 import { withTrademark } from "@/lib/withTrademark";
 
 const GOAL_LEN = 10;
-const HELP_LEN = 3;
-const HINDER_LEN = 3;
+const HELP_LEN = 4;
+const BOTH_LEN = 4;
+const HINDER_LEN = 4;
 const MAX_STRENGTHS = 10;
 const DND_TYPE = "application/x-challenge-slot";
 
 const emptyGoal = () => Array(GOAL_LEN).fill(null);
 const emptyHelp = () => Array(HELP_LEN).fill(null);
+const emptyBoth = () => Array(BOTH_LEN).fill(null);
 const emptyHinder = () => Array(HINDER_LEN).fill(null);
 
 const initialBoard = () => ({
   goal: emptyGoal(),
   help: emptyHelp(),
+  both: emptyBoth(),
   hinder: emptyHinder(),
 });
 
-function collectKeys(goal, help, hinder) {
+function collectKeys(goal, help, both, hinder) {
   const out = new Set();
-  [...goal, ...help, ...hinder].forEach((k) => {
+  [...goal, ...help, ...both, ...hinder].forEach((k) => {
     if (k) out.add(k);
   });
   return [...out];
 }
 
-function removeKeyFromZones(goal, help, hinder, key) {
+function removeKeyFromZones(goal, help, both, hinder, key) {
   const g = goal.map((k) => (k === key ? null : k));
   const h = help.map((k) => (k === key ? null : k));
+  const b = both.map((k) => (k === key ? null : k));
   const hi = hinder.map((k) => (k === key ? null : k));
-  return [g, h, hi];
+  return [g, h, b, hi];
 }
 
 function strengthDef(key) {
@@ -130,6 +134,7 @@ export function ChallengeToClarityTab() {
   const [board, setBoard] = useLocalStorage("csb:challengeBoard", initialBoard());
   const goalSlots = board.goal ?? emptyGoal();
   const helpSlots = board.help ?? emptyHelp();
+  const bothSlots = board.both ?? emptyBoth();
   const hinderSlots = board.hinder ?? emptyHinder();
   const [spotlight, setSpotlight] = useState(null);
 
@@ -138,6 +143,7 @@ export function ChallengeToClarityTab() {
       const base = {
         goal: [...(prev.goal ?? emptyGoal())],
         help: [...(prev.help ?? emptyHelp())],
+        both: [...(prev.both ?? emptyBoth())],
         hinder: [...(prev.hinder ?? emptyHinder())],
       };
       return patch(base);
@@ -145,10 +151,10 @@ export function ChallengeToClarityTab() {
   }, [setBoard]);
 
   const placedKeys = useMemo(() => {
-    const keys = collectKeys(goalSlots, helpSlots, hinderSlots);
+    const keys = collectKeys(goalSlots, helpSlots, bothSlots, hinderSlots);
     const order = new Map(STRENGTHS.map((s, i) => [s.key, i]));
     return [...keys].sort((a, b) => (order.get(a) ?? 0) - (order.get(b) ?? 0));
-  }, [goalSlots, helpSlots, hinderSlots]);
+  }, [goalSlots, helpSlots, bothSlots, hinderSlots]);
 
   const placedDefs = useMemo(
     () =>
@@ -162,20 +168,27 @@ export function ChallengeToClarityTab() {
     (zone, index) => {
       if (zone === "goal") return goalSlots[index];
       if (zone === "help") return helpSlots[index];
+      if (zone === "both") return bothSlots[index];
       return hinderSlots[index];
     },
-    [goalSlots, helpSlots, hinderSlots]
+    [goalSlots, helpSlots, bothSlots, hinderSlots]
   );
 
   const handlePickerToggle = useCallback(
     (key) => {
       setSpotlight(null);
       setZones((b) => {
-        if (collectKeys(b.goal, b.help, b.hinder).includes(key)) {
-          const [g, h, hi] = removeKeyFromZones(b.goal, b.help, b.hinder, key);
-          return { goal: g, help: h, hinder: hi };
+        if (collectKeys(b.goal, b.help, b.both, b.hinder).includes(key)) {
+          const [g, h, bt, hi] = removeKeyFromZones(
+            b.goal,
+            b.help,
+            b.both,
+            b.hinder,
+            key
+          );
+          return { goal: g, help: h, both: bt, hinder: hi };
         }
-        if (collectKeys(b.goal, b.help, b.hinder).length >= MAX_STRENGTHS) {
+        if (collectKeys(b.goal, b.help, b.both, b.hinder).length >= MAX_STRENGTHS) {
           return b;
         }
         const emptyGoalIdx = b.goal.findIndex((k) => k == null);
@@ -231,15 +244,18 @@ export function ChallengeToClarityTab() {
       setZones((b) => {
         const goal = [...b.goal];
         const help = [...b.help];
+        const both = [...b.both];
         const hinder = [...b.hinder];
         const read = (z, i) => {
           if (z === "goal") return goal[i];
           if (z === "help") return help[i];
+          if (z === "both") return both[i];
           return hinder[i];
         };
         const write = (z, i, k) => {
           if (z === "goal") goal[i] = k;
           else if (z === "help") help[i] = k;
+          else if (z === "both") both[i] = k;
           else hinder[i] = k;
         };
         const srcKey = read(srcZone, srcIndex);
@@ -252,7 +268,7 @@ export function ChallengeToClarityTab() {
           write(destZone, destIndex, srcKey);
           write(srcZone, srcIndex, destKey);
         }
-        return { goal, help, hinder };
+        return { goal, help, both, hinder };
       });
     },
     [setZones]
@@ -271,6 +287,8 @@ export function ChallengeToClarityTab() {
         ? goalSlots[index]
         : zone === "help"
           ? helpSlots[index]
+          : zone === "both"
+            ? bothSlots[index]
           : hinderSlots[index];
 
     if (!key) {
@@ -323,7 +341,7 @@ export function ChallengeToClarityTab() {
         )}
         <p className="mt-3 text-xs text-neutral-500 leading-relaxed">
           Choose up to ten themes. New picks fill the Goal grid in order. Drag
-          tiles into Help or Hinder. Double-click a tile for the short
+          tiles into Help, Both, or Hinder. Double-click a tile for the short
           description (same as the soundboard).
         </p>
       </div>
@@ -344,7 +362,7 @@ export function ChallengeToClarityTab() {
               </div>
             </section>
 
-            <section className="grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8">
+            <section className="grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-6">
               <div>
                 <h3 className="mb-3 text-center text-sm font-semibold tracking-tight text-emerald-900">
                   Help
@@ -352,6 +370,16 @@ export function ChallengeToClarityTab() {
                 <div className="flex flex-col gap-2 md:gap-3">
                   {Array.from({ length: HELP_LEN }, (_, i) =>
                     renderSlot("help", i, true)
+                  )}
+                </div>
+              </div>
+              <div>
+                <h3 className="mb-3 text-center text-sm font-semibold tracking-tight text-amber-900">
+                  Both
+                </h3>
+                <div className="flex flex-col gap-2 md:gap-3">
+                  {Array.from({ length: BOTH_LEN }, (_, i) =>
+                    renderSlot("both", i, true)
                   )}
                 </div>
               </div>
