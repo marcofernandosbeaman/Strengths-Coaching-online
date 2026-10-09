@@ -13,7 +13,9 @@ export function useLocalStorage(key, initial) {
   useEffect(() => {
     try {
       localStorage.setItem(key, JSON.stringify(state));
-    } catch {}
+    } catch {
+      // Storage unavailable (private mode); keep in-memory state.
+    }
   }, [key, state]);
 
   return [state, setState];

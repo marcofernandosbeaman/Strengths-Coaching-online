@@ -36,8 +36,15 @@ export const THEME_TO_DOMAIN = {
 };
 
 export const DOMAIN_COLORS = {
-  Executing: "#6A1B9A",
-  Influencing: "#EF6C00",
-  Relationship: "#1565C0",
-  Strategic: "#2E7D32"
+  Executing: "#8f3fb0",
+  Influencing: "#f36c21",
+  Relationship: "#1678c8",
+  Strategic: "#159268"
+};
+
+export const DOMAIN_LABELS = {
+  Executing: "Executing",
+  Influencing: "Influencing",
+  Relationship: "Relationship Building",
+  Strategic: "Strategic Thinking"
 };
