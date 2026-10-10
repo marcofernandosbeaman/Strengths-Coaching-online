@@ -21,6 +21,13 @@ import ConnectThemes from "@/pages/ConnectThemes";
 const PAGES = [
   { id: "home", label: "Home", icon: HomeIcon, Page: Home },
   {
+    id: "connect",
+    label: "Connect With Your Themes",
+    icon: Puzzle,
+    Page: ConnectThemes,
+    desc: "Match each theme with what it brings and what it needs to be at its best.",
+  },
+  {
     id: "soundboard",
     label: "Sound Desk",
     icon: SlidersVertical,
@@ -55,19 +62,13 @@ const PAGES = [
     Page: StrengthsStrategy,
     desc: "Aim your strengths at a current goal, opportunity or challenge.",
   },
-  {
-    id: "connect",
-    label: "Connect With Your Themes",
-    icon: Puzzle,
-    Page: ConnectThemes,
-    desc: "Match each theme with what it brings and what it needs to be at its best.",
-  },
 ];
 
 export default function App() {
   const [page, setPage] = useLocalStorage("hub:page", "home");
   const [selected, setSelected] = useLocalStorage("hub:themes", []);
   const [participant, setParticipant] = useLocalStorage("hub:participant", "");
+  const [logo, setLogo] = useLocalStorage("hub:logo", "");
   const themes = selected.map(getTheme).filter(Boolean);
 
   const go = (id) => {
@@ -79,7 +80,7 @@ export default function App() {
     <div className="app">
       <aside className="sidebar no-print">
         <button className="brand" onClick={() => go("home")}>
-          <TM>CliftonStrengths</TM>
+          Strengths
           <br />
           Exploration Hub
         </button>
@@ -113,6 +114,8 @@ export default function App() {
       </aside>
 
       <main className="main">
+        {/* Fixed in print, so the logo sits top right on every PDF page. */}
+        {logo && <img className="print-only print-logo" src={logo} alt="" />}
         {PAGES.map(({ id, Page }) => {
           // Pages stay mounted so session notes survive switching activities.
           const needsThemes = id !== "home" && themes.length === 0;
@@ -127,6 +130,8 @@ export default function App() {
                   setSelected={setSelected}
                   participant={participant}
                   setParticipant={setParticipant}
+                  logo={logo}
+                  setLogo={setLogo}
                   go={go}
                   pages={PAGES}
                 />
@@ -136,7 +141,7 @@ export default function App() {
         })}
         <footer className="legal">
           <span className="print-only">
-            <TM>CliftonStrengths</TM> Exploration Hub ·{" "}
+            Strengths Exploration Hub ·{" "}
           </span>
           
           Gallup<span className="mark">®</span>, CliftonStrengths

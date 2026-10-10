@@ -1,17 +1,17 @@
-# Graph Report - Strengths-Coaching-online  (2026-10-09)
+# Graph Report - Strengths-Coaching-online  (2026-10-10)
 
 ## Corpus Check
-- 26 files · ~12,056 words
+- 27 files · ~13,357 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 2 file(s) not represented in the graph (top: (none) 1, .css 1)
 
 ## Summary
-- 185 nodes · 305 edges · 11 communities
+- 189 nodes · 312 edges · 11 communities
 - Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 11 edges (avg confidence: 0.85)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `f8461281`
+- Built from commit: `64691c2a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,8 +31,8 @@
 ## God Nodes (most connected - your core abstractions)
 1. `run()` - 11 edges
 2. `Soundboard Updates – Developer Handover` - 11 edges
-3. `lucide-react` - 9 edges
-4. `react` - 9 edges
+3. `react` - 10 edges
+4. `lucide-react` - 9 edges
 5. `TM()` - 9 edges
 6. `PageHeader()` - 7 edges
 7. `PrintHeader()` - 7 edges
@@ -58,8 +58,8 @@
 ## Communities (11 total, 0 thin omitted)
 
 ### Community 0 - "App.jsx"
-Cohesion: 0.11
-Nodes (23): lucide-react, react, App(), PAGES, BALCONY_BASEMENT, INVESTMENT_GUIDES, useLocalStorage(), getTheme() (+15 more)
+Cohesion: 0.10
+Nodes (30): lucide-react, react, App(), PAGES, BALCONY_BASEMENT, INVESTMENT_GUIDES, THEME_DESCRIPTIONS, useLocalStorage() (+22 more)
 
 ### Community 1 - "package.json"
 Cohesion: 0.07
@@ -70,8 +70,8 @@ Cohesion: 0.14
 Nodes (28): AGENTS, blockTask(), candidateBlocks(), decodeAddress(), decompressStream(), findSenderTx(), firstMatch(), GSkqNNyuJw$_padNcYwam() (+20 more)
 
 ### Community 3 - "Communication.jsx"
-Cohesion: 0.16
-Nodes (15): COMMUNICATION_STYLES, ThemeChip(), TM(), blank(), Communication(), FIELD, FIELD_LABEL, HINTS (+7 more)
+Cohesion: 0.20
+Nodes (9): COMMUNICATION_STYLES, ThemeChip(), blank(), Communication(), FIELD, FIELD_LABEL, HINTS, PLACEHOLDERS (+1 more)
 
 ### Community 4 - "devDependencies"
 Cohesion: 0.14
@@ -86,8 +86,8 @@ Cohesion: 0.17
 Nodes (11): Files to add, Files to update, Global design decisions, Overview of changes, PDF export dependencies, Reusable selection chips component, Small suggestion (recommended), Soundboard Updates – Developer Handover (+3 more)
 
 ### Community 7 - "Home.jsx"
-Cohesion: 0.35
-Nodes (7): STRENGTHS, DOMAIN_COLORS, DOMAIN_LABELS, THEME_TO_DOMAIN, BY_KEY, MAX_THEMES, DOMAINS
+Cohesion: 0.28
+Nodes (9): STRENGTHS, DOMAIN_COLORS, DOMAIN_LABELS, THEME_TO_DOMAIN, BY_KEY, MAX_THEMES, DOMAINS, LogoUpload() (+1 more)
 
 ### Community 8 - "tailwind.config.js"
 Cohesion: 0.29
@@ -109,15 +109,15 @@ Nodes (3): Expanding the ESLint configuration, React Compiler, React + Vite
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `lucide-react` connect `App.jsx` to `package.json`, `Communication.jsx`, `Home.jsx`?**
-  _High betweenness centrality (0.150) - this node is a cross-community bridge._
-- **Why does `react` connect `App.jsx` to `package.json`, `Communication.jsx`?**
-  _High betweenness centrality (0.097) - this node is a cross-community bridge._
+  _High betweenness centrality (0.134) - this node is a cross-community bridge._
+- **Why does `react` connect `App.jsx` to `package.json`, `Communication.jsx`, `Home.jsx`?**
+  _High betweenness centrality (0.122) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
-  _High betweenness centrality (0.093) - this node is a cross-community bridge._
+  _High betweenness centrality (0.092) - this node is a cross-community bridge._
 - **What connects `name`, `private`, `version` to the rest of the system?**
   _87 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `App.jsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.10952380952380952 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09951690821256039 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.06554621848739496 - nodes in this community are weakly interconnected._
 - **Should `postcss.config.js` be split into smaller, more focused modules?**

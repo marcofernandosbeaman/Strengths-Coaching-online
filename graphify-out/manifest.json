@@ -18,9 +18,9 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-    "mtime": 1791513616.7783694,
-    "seen": 1791513648.236024,
-    "ast_hash": "c744e1899c198675858fb8d1bae4c327",
+    "mtime": 1791608465.4988387,
+    "seen": 1791608521.7593653,
+    "ast_hash": "8833fd0e3ea6a85bd2e8a8d94304cb92",
     "semantic_hash": ""
   },
   "src/data/balconyBasement.js": {
@@ -108,15 +108,15 @@
     "semantic_hash": ""
   },
   "src/pages/Home.jsx": {
-    "mtime": 1791513524.7910664,
-    "seen": 1791513648.2360358,
-    "ast_hash": "7ba98110a7135a8b8fe129dcc2ed8a5f",
+    "mtime": 1791608489.0177112,
+    "seen": 1791608521.759385,
+    "ast_hash": "198ed41409406d4a482676c5ac4405b0",
     "semantic_hash": ""
   },
   "src/pages/SoundDesk.jsx": {
-    "mtime": 1791513524.7915626,
-    "seen": 1791513648.2360365,
-    "ast_hash": "0f9bf68f779a343b9e10e2f791d48ae9",
+    "mtime": 1791607900.4402828,
+    "seen": 1791608029.6307805,
+    "ast_hash": "ae17a23297b038d0d249187b17cb9b23",
     "semantic_hash": ""
   },
   "src/pages/StrengthsStrategy.jsx": {
@@ -150,9 +150,9 @@
     "semantic_hash": ""
   },
   "index.html": {
-    "mtime": 1791513475.7329588,
-    "seen": 1791513648.2360413,
-    "ast_hash": "4d82dc5298aed7f44052dc7b7646cf4e",
+    "mtime": 1791607900.448414,
+    "seen": 1791608029.6307876,
+    "ast_hash": "db92322b5bba736be63324b9940bc4f7",
     "semantic_hash": ""
   },
   "tasks/soundboard-handover.md": {
@@ -171,6 +171,12 @@
     "mtime": 1791512920.3118048,
     "seen": 1791513648.2360435,
     "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "src/data/themeDescriptions.js": {
+    "mtime": 1791607883.1329112,
+    "seen": 1791608029.6307683,
+    "ast_hash": "8ab01c5a84939379630334ea292241dc",
     "semantic_hash": ""
   }
 }

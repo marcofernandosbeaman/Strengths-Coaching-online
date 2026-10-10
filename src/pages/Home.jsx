@@ -1,4 +1,5 @@
-import { ArrowRight, X } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowRight, ImagePlus, X } from "lucide-react";
 import { STRENGTHS } from "@/data/strengths";
 import { DOMAIN_COLORS, DOMAIN_LABELS } from "@/data/themeDomains";
 import { TM } from "@/lib/themes";
@@ -12,6 +13,8 @@ export default function Home({
   setSelected,
   participant,
   setParticipant,
+  logo,
+  setLogo,
   go,
   pages,
 }) {
@@ -27,22 +30,25 @@ export default function Home({
   return (
     <div className="home">
       <section className="hero">
-        <div className="eyebrow">
-          <TM>CliftonStrengths</TM> Exploration Hub
+        <div className="hero-text">
+          <div className="eyebrow">
+            Strengths Exploration Hub
+          </div>
+          <h1>Let’s explore your strengths.</h1>
+          <p>
+            Choose your themes once, then move freely between activities that help
+            you understand, apply and talk about what makes you strong.
+          </p>
+          <label className="name-field">
+            <span>Participant name</span>
+            <input
+              value={participant}
+              onChange={(e) => setParticipant(e.target.value)}
+              placeholder="Optional, appears on downloads"
+            />
+          </label>
         </div>
-        <h1>Let’s explore your strengths.</h1>
-        <p>
-          Choose your themes once, then move freely between activities that help
-          you understand, apply and talk about what makes you strong.
-        </p>
-        <label className="name-field">
-          <span>Participant name</span>
-          <input
-            value={participant}
-            onChange={(e) => setParticipant(e.target.value)}
-            placeholder="Optional, appears on downloads"
-          />
-        </label>
+        <LogoUpload logo={logo} setLogo={setLogo} />
       </section>
 
       <section className="panel picker">
@@ -135,6 +141,81 @@ export default function Home({
             ))}
         </div>
       </section>
+    </div>
+  );
+}
+
+const LOGO_MAX = 480; // px, longest side; keeps the stored image small
+
+// Shrink an image file to a PNG data URL so it fits in browser storage.
+function readLogo(file) {
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, LOGO_MAX / Math.max(img.naturalWidth || LOGO_MAX, img.naturalHeight || LOGO_MAX));
+      const canvas = document.createElement("canvas");
+      canvas.width = Math.round((img.naturalWidth || LOGO_MAX) * scale);
+      canvas.height = Math.round((img.naturalHeight || LOGO_MAX) * scale);
+      canvas.getContext("2d").drawImage(img, 0, 0, canvas.width, canvas.height);
+      URL.revokeObjectURL(url);
+      resolve(canvas.toDataURL("image/png"));
+    };
+    img.onerror = () => {
+      URL.revokeObjectURL(url);
+      reject(new Error("unreadable"));
+    };
+    img.src = url;
+  });
+}
+
+function LogoUpload({ logo, setLogo }) {
+  const input = useRef(null);
+  const [error, setError] = useState("");
+
+  const onFile = async (e) => {
+    const file = e.target.files?.[0];
+    e.target.value = "";
+    if (!file) return;
+    try {
+      setLogo(await readLogo(file));
+      setError("");
+    } catch {
+      setError("That file could not be read. Try a PNG, JPG or SVG.");
+    }
+  };
+
+  return (
+    <div className="logo-upload">
+      <div className="label">Your logo</div>
+      <button
+        type="button"
+        className={`logo-drop ${logo ? "has-logo" : ""}`}
+        onClick={() => input.current.click()}
+      >
+        {logo ? (
+          <img src={logo} alt="Uploaded logo" />
+        ) : (
+          <>
+            <ImagePlus size={22} strokeWidth={1.6} />
+            <span>Upload logo</span>
+          </>
+        )}
+      </button>
+      <input ref={input} type="file" accept="image/*" hidden onChange={onFile} />
+      <p className="muted">
+        {error || (logo ? "Appears top right on every PDF." : "PNG, JPG or SVG. Appears top right on every PDF.")}
+      </p>
+      {logo && (
+        <div className="logo-actions">
+          <button type="button" className="link" onClick={() => input.current.click()}>
+            Replace
+          </button>
+          <button type="button" className="link" onClick={() => setLogo("")}>
+            Remove
+          </button>
+        </div>
+      )}
     </div>
   );
 }

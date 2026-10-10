@@ -25,7 +25,7 @@
       "file_type": "code",
       "norm_label": "nothemes()",
       "source_file": "src/App.jsx",
-      "source_location": "L151"
+      "source_location": "L156"
     },
     {
       "id": "src_hooks_uselocalstorage_uselocalstorage",
@@ -86,6 +86,18 @@
       "norm_label": "printheader()",
       "source_file": "src/lib/themes.jsx",
       "source_location": "L34"
+    },
+    {
+      "id": "src_lib_themes_tm",
+      "label": "TM()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "tm()",
+      "source_file": "src/lib/themes.jsx",
+      "source_location": "L2"
     },
     {
       "id": "src_pages_balconiesbasements_balconiesbasements",
@@ -169,7 +181,7 @@
       "file_type": "code",
       "norm_label": "home()",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L9"
+      "source_location": "L10"
     },
     {
       "id": "src_pages_sounddesk_channel",
@@ -181,7 +193,7 @@
       "file_type": "code",
       "norm_label": "channel()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L112"
+      "source_location": "L108"
     },
     {
       "id": "src_pages_sounddesk_clamp",
@@ -205,7 +217,7 @@
       "file_type": "code",
       "norm_label": "mixcard()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L176"
+      "source_location": "L181"
     },
     {
       "id": "src_pages_sounddesk_sounddesk",
@@ -230,6 +242,54 @@
       "norm_label": "strengthsstrategy()",
       "source_file": "src/pages/StrengthsStrategy.jsx",
       "source_location": "L13"
+    },
+    {
+      "id": "src_pages_themedynamics_crust",
+      "label": "crust()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "crust()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_pages_themedynamics_polar",
+      "label": "polar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "polar()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_pages_themedynamics_themedynamics",
+      "label": "ThemeDynamics()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "themedynamics()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L23"
+    },
+    {
+      "id": "src_pages_themedynamics_wedge",
+      "label": "wedge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "wedge()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L11"
     },
     {
       "id": "postcss_config_blocktask",
@@ -460,18 +520,6 @@
       "source_location": "L11"
     },
     {
-      "id": "src_lib_themes_tm",
-      "label": "TM()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "tm()",
-      "source_file": "src/lib/themes.jsx",
-      "source_location": "L2"
-    },
-    {
       "id": "src_pages_communication_blank",
       "label": "blank()",
       "_callable": true,
@@ -508,52 +556,28 @@
       "source_location": "L283"
     },
     {
-      "id": "src_pages_themedynamics_crust",
-      "label": "crust()",
+      "id": "src_pages_home_logoupload",
+      "label": "LogoUpload()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
+      "community": 7,
+      "community_name": "Home.jsx",
       "file_type": "code",
-      "norm_label": "crust()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L16"
+      "norm_label": "logoupload()",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L172"
     },
     {
-      "id": "src_pages_themedynamics_polar",
-      "label": "polar()",
+      "id": "src_pages_home_readlogo",
+      "label": "readLogo()",
       "_callable": true,
       "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
+      "community": 7,
+      "community_name": "Home.jsx",
       "file_type": "code",
-      "norm_label": "polar()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "src_pages_themedynamics_themedynamics",
-      "label": "ThemeDynamics()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "themedynamics()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L23"
-    },
-    {
-      "id": "src_pages_themedynamics_wedge",
-      "label": "wedge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "wedge()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L11"
+      "norm_label": "readlogo()",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L151"
     },
     {
       "id": "tailwind_config_ozz",
@@ -694,6 +718,28 @@
       "source_location": "L1"
     },
     {
+      "id": "src_data_themedescriptions",
+      "label": "themeDescriptions.js",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "themedescriptions.js",
+      "source_file": "src/data/themeDescriptions.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_themedescriptions_theme_descriptions",
+      "label": "THEME_DESCRIPTIONS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "theme_descriptions",
+      "source_file": "src/data/themeDescriptions.js",
+      "source_location": "L3"
+    },
+    {
       "id": "src_hooks_uselocalstorage",
       "label": "useLocalStorage.js",
       "_origin": "ast",
@@ -702,6 +748,17 @@
       "file_type": "code",
       "norm_label": "uselocalstorage.js",
       "source_file": "src/hooks/useLocalStorage.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_lib_themes",
+      "label": "themes.jsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "themes.jsx",
+      "source_file": "src/lib/themes.jsx",
       "source_location": "L1"
     },
     {
@@ -791,6 +848,28 @@
       "norm_label": "lanes",
       "source_file": "src/pages/StrengthsStrategy.jsx",
       "source_location": "L6"
+    },
+    {
+      "id": "src_pages_themedynamics",
+      "label": "ThemeDynamics.jsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "themedynamics.jsx",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_themedynamics_blank",
+      "label": "blank",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "blank",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L21"
     },
     {
       "id": "ref_lucide_react",
@@ -1391,17 +1470,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_lib_themes",
-      "label": "themes.jsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "themes.jsx",
-      "source_file": "src/lib/themes.jsx",
-      "source_location": "L1"
-    },
-    {
       "id": "src_pages_communication",
       "label": "Communication.jsx",
       "_origin": "ast",
@@ -1466,28 +1534,6 @@
       "norm_label": "scenarios",
       "source_file": "src/pages/Communication.jsx",
       "source_location": "L6"
-    },
-    {
-      "id": "src_pages_themedynamics",
-      "label": "ThemeDynamics.jsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "themedynamics.jsx",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_themedynamics_blank",
-      "label": "blank",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "blank",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L21"
     },
     {
       "id": "package_devdependencies",
@@ -2038,7 +2084,7 @@
       "file_type": "code",
       "norm_label": "domains",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L7"
+      "source_location": "L8"
     },
     {
       "id": "tailwindcss",
@@ -2537,7 +2583,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L91",
+      "source_location": "L97",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home_logoupload",
+      "target": "src_pages_home_readlogo",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -3197,7 +3255,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L2",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -3209,7 +3267,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3221,7 +3279,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3233,7 +3291,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -3245,7 +3303,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -3257,7 +3315,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L5",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -3270,6 +3328,18 @@
       "context": "import",
       "source_file": "src/pages/SoundDesk.jsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sounddesk",
+      "target": "src_data_themedescriptions_theme_descriptions",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SoundDesk.jsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3802,7 +3872,7 @@
     },
     {
       "source": "src_pages_home",
-      "target": "ref_lucide_react",
+      "target": "ref_react",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3814,7 +3884,7 @@
     },
     {
       "source": "src_pages_home",
-      "target": "src_data_strengths",
+      "target": "ref_lucide_react",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3826,7 +3896,7 @@
     },
     {
       "source": "src_pages_home",
-      "target": "src_data_themedomains",
+      "target": "src_data_strengths",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3838,7 +3908,7 @@
     },
     {
       "source": "src_pages_home",
-      "target": "src_lib_themes",
+      "target": "src_data_themedomains",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3850,7 +3920,7 @@
     },
     {
       "source": "src_pages_home",
-      "target": "src_lib_themedata",
+      "target": "src_lib_themes",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -3858,6 +3928,18 @@
       "context": "import",
       "source_file": "src/pages/Home.jsx",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home",
+      "target": "src_lib_themedata",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -3894,6 +3976,18 @@
       "context": "import",
       "source_file": "src/pages/SoundDesk.jsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sounddesk",
+      "target": "src_data_themedescriptions",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SoundDesk.jsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -4784,7 +4878,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/App.jsx",
-      "source_location": "L151",
+      "source_location": "L156",
       "weight": 1.0
     },
     {
@@ -4851,6 +4945,17 @@
       "confidence_score": 1.0,
       "source_file": "src/data/strengths.js",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_data_themedescriptions",
+      "target": "src_data_themedescriptions_theme_descriptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/data/themeDescriptions.js",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -5163,24 +5268,46 @@
     },
     {
       "source": "src_pages_home",
-      "target": "src_pages_home_domains",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/Home.jsx",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_home",
       "target": "src_pages_home_home",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L9",
+      "source_location": "L10",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home",
+      "target": "src_pages_home_readlogo",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L151",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home",
+      "target": "src_pages_home_logoupload",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L172",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_home",
+      "target": "src_pages_home_domains",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5202,7 +5329,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L112",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
@@ -5213,7 +5340,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L176",
+      "source_location": "L181",
       "weight": 1.0
     },
     {
@@ -5533,7 +5660,7 @@
       "confidence_score": 0.85,
       "context": "argument",
       "source_file": "src/App.jsx",
-      "source_location": "L71",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -5562,7 +5689,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_sounddesk_sounddesk",
+      "target": "src_pages_connectthemes_connectthemes",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5574,7 +5701,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_themedynamics_themedynamics",
+      "target": "src_pages_sounddesk_sounddesk",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5586,7 +5713,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_communication_communication",
+      "target": "src_pages_themedynamics_themedynamics",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5598,7 +5725,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_balconiesbasements_balconiesbasements",
+      "target": "src_pages_communication_communication",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5610,7 +5737,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_strengthsstrategy_strengthsstrategy",
+      "target": "src_pages_balconiesbasements_balconiesbasements",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5622,7 +5749,7 @@
     },
     {
       "source": "src_app",
-      "target": "src_pages_connectthemes_connectthemes",
+      "target": "src_pages_strengthsstrategy_strengthsstrategy",
       "relation": "indirect_call",
       "_origin": "ast",
       "confidence": "INFERRED",
@@ -5634,5 +5761,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "f84612817af29ec638db1d621a85ddbe8fdcb475"
+  "built_at_commit": "64691c2ac93cd8d1f06a2a8ff9b4e8acf26bff88"
 }

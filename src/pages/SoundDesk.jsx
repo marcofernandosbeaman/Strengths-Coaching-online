@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
-import { RotateCcw, Save, Download, X } from "lucide-react";
+import { RotateCcw, Save, Download } from "lucide-react";
 import { BALCONY_BASEMENT } from "@/data/balconyBasement";
-import questions from "@/data/theme-questions.json";
+import { THEME_DESCRIPTIONS } from "@/data/themeDescriptions";
 import { PageHeader, PrintHeader, TM } from "@/lib/themes";
 
 const KNOB = 84; // knob height in px, matches .knob in CSS
@@ -29,11 +29,11 @@ export default function SoundDesk({ themes, participant }) {
   };
 
   return (
-    <div>
+    <div className="sound-desk">
       <PageHeader
         eyebrow="Activity"
         title="Sound Desk"
-        sub="Mix your themes like a live sound desk. Drag each theme up or down to show how loudly it is playing right now. Double-click a theme for a reminder."
+        sub="Mix your themes like a live sound desk. Drag each theme up or down to show how loudly it is playing right now. Double-click a theme to see its description."
       >
         <button className="btn" onClick={() => setLevels({})}>
           <RotateCcw size={15} /> Reset levels
@@ -41,7 +41,24 @@ export default function SoundDesk({ themes, participant }) {
       </PageHeader>
       <PrintHeader activity="Sound Desk" title="My strengths mix" participant={participant} />
 
-      <section className="desk no-print">
+      <section
+        className={`theme-card no-print ${info ? "show" : ""}`}
+        style={{ "--accent": info?.colour }}
+        aria-live="polite"
+      >
+        {info ? (
+          <>
+            <h3>
+              <TM>{info.name}</TM>
+            </h3>
+            <p>{THEME_DESCRIPTIONS[info.key]}</p>
+          </>
+        ) : (
+          <p className="muted">Double-click a theme on the desk to see its brief description.</p>
+        )}
+      </section>
+
+      <section className="desk">
         {desk.map((t) => (
           <Channel
             key={t.key}
@@ -53,32 +70,16 @@ export default function SoundDesk({ themes, participant }) {
         ))}
       </section>
 
-      {info && (
-        <div className="popover no-print" role="dialog" style={{ "--accent": info.colour }}>
-          <button className="icon-btn" aria-label="Close" onClick={() => setInfo(null)}>
-            <X size={16} />
-          </button>
-          <h3>
-            <TM>{info.name}</TM>
-          </h3>
-          <p>{info.blurb}</p>
-          {questions[info.key]?.[0] && (
-            <p className="popover-q">
-              <b>Coaching question</b>
-              {questions[info.key][0]}
-            </p>
-          )}
-        </div>
-      )}
-
       <section className="panel desk-notes">
         <div>
           <h2>What do you notice about this mix?</h2>
           <textarea
+            className="no-print"
             value={note}
             onChange={(e) => setNote(e.target.value)}
             placeholder="Which themes are loud right now? Which would you like to dial up, and what would that change?"
           />
+          <p className="print-only reflection-text">{note || "Not captured"}</p>
           <div className="row-end no-print">
             <button className="btn" onClick={saveMix}>
               <Save size={15} /> Save mix as note
@@ -90,13 +91,8 @@ export default function SoundDesk({ themes, participant }) {
         </div>
       </section>
 
-      {/* Current mix, shown on print so the PDF always has content. */}
-      <section className="print-only">
-        <MixCard title="Current mix" levels={desk.map((t) => [t, level(t.key)])} note={note} />
-      </section>
-
       {mixes.length > 0 && (
-        <section className="saved-mixes">
+        <section className="saved-mixes no-print">
           <h2>Saved mixes</h2>
           <div className="grid-2">
             {mixes.map((m, i) => (
@@ -111,16 +107,25 @@ export default function SoundDesk({ themes, participant }) {
 
 function Channel({ theme, value, onChange, onInfo }) {
   const ref = useRef(null);
+  const grab = useRef(0); // pointer offset from knob centre, so grabbing the knob does not jump it
 
   const fromPointer = (clientY) => {
     const r = ref.current.getBoundingClientRect();
-    onChange(100 - ((clientY - r.top - KNOB / 2) / (r.height - KNOB)) * 100);
+    onChange(100 - ((clientY - grab.current - r.top - KNOB / 2) / (r.height - KNOB)) * 100);
   };
 
   const onPointerDown = (e) => {
     if (e.button !== 0) return;
+    const knob = e.target.closest(".knob");
+    if (knob) {
+      const k = knob.getBoundingClientRect();
+      grab.current = e.clientY - (k.top + k.height / 2);
+    } else {
+      grab.current = 0;
+      fromPointer(e.clientY);
+    }
+    // Pointer capture retargets the dblclick to the fader, so onDoubleClick lives there.
     e.currentTarget.setPointerCapture(e.pointerId);
-    fromPointer(e.clientY);
   };
 
   const onKeyDown = (e) => {
@@ -142,6 +147,7 @@ function Channel({ theme, value, onChange, onInfo }) {
         ref={ref}
         onPointerDown={onPointerDown}
         onPointerMove={(e) => e.buttons === 1 && fromPointer(e.clientY)}
+        onDoubleClick={onInfo}
       >
         <div className="rail" />
         <div className="rail-fill" style={{ height: `calc((100% - ${KNOB}px) * ${value / 100})` }} />
@@ -154,7 +160,6 @@ function Channel({ theme, value, onChange, onInfo }) {
           aria-valuemax={100}
           aria-valuenow={value}
           style={{ top: `calc((100% - ${KNOB}px) * ${(100 - value) / 100})` }}
-          onDoubleClick={onInfo}
           onKeyDown={onKeyDown}
         >
           <TM>{theme.name}</TM>
