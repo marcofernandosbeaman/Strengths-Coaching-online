@@ -114,7 +114,7 @@ export default function App() {
       </aside>
 
       <main className="main">
-        {/* Fixed in print, so the logo sits top right on every PDF page. */}
+        {/* Top right of the first PDF page, beside the print header. */}
         {logo && <img className="print-only print-logo" src={logo} alt="" />}
         {PAGES.map(({ id, Page }) => {
           // Pages stay mounted so session notes survive switching activities.
