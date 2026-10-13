@@ -12,19 +12,24 @@ const LANE_MAX = 5;
 
 export default function StrengthsStrategy({ themes, participant }) {
   const [goal, setGoal] = useState("");
-  const [placed, setPlaced] = useState({}); // themeKey -> laneId
+  const [rating, setRating] = useState({ importance: 5, motivation: 5 }); // 1–10
+  const [lanes, setLanes] = useState({ help: [], both: [], hinder: [] }); // laneId -> themeKeys in the user's chosen order
   const [held, setHeld] = useState(null); // tap-to-place for touch screens
   const [insight, setInsight] = useState("");
   const [action, setAction] = useState("");
 
-  const inLane = (id) => themes.filter((t) => placed[t.key] === id);
-  const place = (key, lane) => {
-    if (!key) return;
-    if (lane && placed[key] !== lane && inLane(lane).length >= LANE_MAX) return;
-    setPlaced((p) => {
-      const n = { ...p };
-      if (lane) n[key] = lane;
-      else delete n[key];
+  const byKey = Object.fromEntries(themes.map((t) => [t.key, t]));
+  const inLane = (id) => lanes[id].map((k) => byKey[k]).filter(Boolean);
+  // Moves a theme into a lane before `before` (or to the end), or back to the bank when lane is null.
+  const place = (key, lane, before) => {
+    if (!key || key === before) return;
+    if (lane && !lanes[lane].includes(key) && lanes[lane].length >= LANE_MAX) return;
+    setLanes((p) => {
+      const n = Object.fromEntries(Object.entries(p).map(([id, keys]) => [id, keys.filter((k) => k !== key)]));
+      if (lane) {
+        const i = n[lane].indexOf(before);
+        n[lane].splice(i < 0 ? n[lane].length : i, 0, key);
+      }
       return n;
     });
     setHeld(null);
@@ -40,16 +45,23 @@ export default function StrengthsStrategy({ themes, participant }) {
       .filter(Boolean)
       .join(" ") || "As themes are placed, a starting summary appears here.";
 
-  const tile = (t) => (
+  // Inside a lane, dropping (or tapping while holding) on a tile inserts before it.
+  const tile = (t, lane) => (
     <button
       key={t.key}
       className={`tile ${held === t.key ? "held" : ""}`}
       style={{ "--accent": t.colour }}
       draggable
       onDragStart={(e) => e.dataTransfer.setData("text/plain", t.key)}
+      onDrop={(e) => {
+        if (!lane) return;
+        e.stopPropagation();
+        place(e.dataTransfer.getData("text/plain"), lane, t.key);
+      }}
       onClick={(e) => {
         e.stopPropagation();
-        setHeld(held === t.key ? null : t.key);
+        if (lane && held && held !== t.key) place(held, lane, t.key);
+        else setHeld(held === t.key ? null : t.key);
       }}
     >
       <TM>{t.name}</TM>
@@ -62,7 +74,8 @@ export default function StrengthsStrategy({ themes, participant }) {
     onClick: () => held && place(held, lane),
   });
 
-  const bank = themes.filter((t) => !placed[t.key]);
+  const placed = Object.values(lanes).flat();
+  const bank = themes.filter((t) => !placed.includes(t.key));
 
   return (
     <div>
@@ -74,28 +87,49 @@ export default function StrengthsStrategy({ themes, participant }) {
       <PrintHeader activity="Strengths Strategy" title="Aiming my strengths" participant={participant} />
 
       <section className="panel goal">
-        <div className="label">Current goal or challenge</div>
-        <textarea
-          className="goal-input no-print"
-          rows={2}
-          value={goal}
-          onChange={(e) => setGoal(e.target.value)}
-          placeholder="Example: Prepare my team for an upcoming organisational change."
-        />
-        <p className="print-only goal-text">{goal || "Not captured"}</p>
+        <div className="goal-main">
+          <div className="label">Current goal or challenge</div>
+          <textarea
+            className="goal-input no-print"
+            rows={2}
+            value={goal}
+            onChange={(e) => setGoal(e.target.value)}
+            placeholder="Example: Prepare my team for an upcoming organisational change."
+          />
+          <p className="print-only goal-text">{goal || "Not captured"}</p>
+        </div>
+        <div className="goal-ratings">
+          {[
+            ["importance", "How important is this to you?"],
+            ["motivation", "How motivated are you to take action?"],
+          ].map(([k, q]) => (
+            <label key={k} className="rating">
+              <span>{q}</span>
+              <input
+                className="no-print"
+                type="range"
+                min={1}
+                max={10}
+                value={rating[k]}
+                onChange={(e) => setRating((r) => ({ ...r, [k]: +e.target.value }))}
+              />
+              <b>{rating[k]}/10</b>
+            </label>
+          ))}
+        </div>
       </section>
 
       <div className="section-head no-print">
         <div>
           <h2>Aim your strengths</h2>
-          <p>Drag each theme into a lane, or tap a theme then tap a lane.</p>
+          <p>Drag each theme into a lane, or tap a theme then tap a lane. Drag within a lane to set the order.</p>
         </div>
         <span className="pill">
           {themes.length - bank.length} of {themes.length} explored
         </span>
       </div>
       <section className={`bank no-print ${held ? "holding" : ""}`} {...dropProps(null)}>
-        {bank.map(tile)}
+        {bank.map((t) => tile(t))}
         {!bank.length && <span className="muted">All themes placed. Drag one back here to remove it.</span>}
       </section>
 
@@ -107,7 +141,7 @@ export default function StrengthsStrategy({ themes, participant }) {
               <p>{l.sub}</p>
             </div>
             <div className={`dropzone ${held ? "target" : ""}`} {...dropProps(l.id)}>
-              {inLane(l.id).map(tile)}
+              {inLane(l.id).map((t) => tile(t, l.id))}
               {!inLane(l.id).length && <span className="drop-hint">Drag up to five themes here</span>}
             </div>
           </article>

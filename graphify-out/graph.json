@@ -40,18 +40,6 @@
       "source_location": "L3"
     },
     {
-      "id": "src_lib_themedata_gettheme",
-      "label": "getTheme()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "gettheme()",
-      "source_file": "src/lib/themeData.js",
-      "source_location": "L13"
-    },
-    {
       "id": "src_lib_themedata_listjoin",
       "label": "listJoin()",
       "_callable": true,
@@ -88,6 +76,18 @@
       "source_location": "L34"
     },
     {
+      "id": "src_lib_themes_themechip",
+      "label": "ThemeChip()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "themechip()",
+      "source_file": "src/lib/themes.jsx",
+      "source_location": "L11"
+    },
+    {
       "id": "src_lib_themes_tm",
       "label": "TM()",
       "_callable": true,
@@ -98,18 +98,6 @@
       "norm_label": "tm()",
       "source_file": "src/lib/themes.jsx",
       "source_location": "L2"
-    },
-    {
-      "id": "src_pages_balconiesbasements_balconiesbasements",
-      "label": "BalconiesBasements()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "balconiesbasements()",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L9"
     },
     {
       "id": "src_pages_connectthemes_confetti",
@@ -172,18 +160,6 @@
       "source_location": "L13"
     },
     {
-      "id": "src_pages_home_home",
-      "label": "Home()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "home()",
-      "source_file": "src/pages/Home.jsx",
-      "source_location": "L10"
-    },
-    {
       "id": "src_pages_sounddesk_channel",
       "label": "Channel()",
       "_callable": true,
@@ -193,7 +169,7 @@
       "file_type": "code",
       "norm_label": "channel()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L108"
+      "source_location": "L142"
     },
     {
       "id": "src_pages_sounddesk_clamp",
@@ -208,16 +184,16 @@
       "source_location": "L8"
     },
     {
-      "id": "src_pages_sounddesk_mixcard",
-      "label": "MixCard()",
+      "id": "src_pages_sounddesk_reflection",
+      "label": "Reflection()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
       "community_name": "App.jsx",
       "file_type": "code",
-      "norm_label": "mixcard()",
+      "norm_label": "reflection()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L181"
+      "source_location": "L215"
     },
     {
       "id": "src_pages_sounddesk_sounddesk",
@@ -229,7 +205,7 @@
       "file_type": "code",
       "norm_label": "sounddesk()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L10"
+      "source_location": "L17"
     },
     {
       "id": "src_pages_strengthsstrategy_strengthsstrategy",
@@ -244,30 +220,6 @@
       "source_location": "L13"
     },
     {
-      "id": "src_pages_themedynamics_crust",
-      "label": "crust()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "crust()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L16"
-    },
-    {
-      "id": "src_pages_themedynamics_polar",
-      "label": "polar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "polar()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L7"
-    },
-    {
       "id": "src_pages_themedynamics_themedynamics",
       "label": "ThemeDynamics()",
       "_callable": true,
@@ -280,16 +232,88 @@
       "source_location": "L23"
     },
     {
+      "id": "src_pages_themedynamics_crust",
+      "label": "crust()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "polar",
+      "file_type": "code",
+      "norm_label": "crust()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L16"
+    },
+    {
+      "id": "src_pages_themedynamics_polar",
+      "label": "polar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "polar",
+      "file_type": "code",
+      "norm_label": "polar()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L7"
+    },
+    {
       "id": "src_pages_themedynamics_wedge",
       "label": "wedge()",
       "_callable": true,
       "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
+      "community": 11,
+      "community_name": "polar",
       "file_type": "code",
       "norm_label": "wedge()",
       "source_file": "src/pages/ThemeDynamics.jsx",
       "source_location": "L11"
+    },
+    {
+      "id": "src_pages_themedynamics_wheel",
+      "label": "Wheel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "polar",
+      "file_type": "code",
+      "norm_label": "wheel()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L198"
+    },
+    {
+      "id": "src_pages_balconiesbasements_balconiesbasements",
+      "label": "BalconiesBasements()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconiesbasements()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_pages_balconiesbasements_balconybasement",
+      "label": "BalconyBasement()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconybasement()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L183"
+    },
+    {
+      "id": "src_pages_balconiesbasements_preview",
+      "label": "Preview()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "preview()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L202"
     },
     {
       "id": "postcss_config_blocktask",
@@ -508,18 +532,6 @@
       "source_location": "L10"
     },
     {
-      "id": "src_lib_themes_themechip",
-      "label": "ThemeChip()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "Communication.jsx",
-      "file_type": "code",
-      "norm_label": "themechip()",
-      "source_file": "src/lib/themes.jsx",
-      "source_location": "L11"
-    },
-    {
       "id": "src_pages_communication_blank",
       "label": "blank()",
       "_callable": true,
@@ -530,6 +542,18 @@
       "norm_label": "blank()",
       "source_file": "src/pages/Communication.jsx",
       "source_location": "L64"
+    },
+    {
+      "id": "src_pages_communication_commcard",
+      "label": "CommCard()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Communication.jsx",
+      "file_type": "code",
+      "norm_label": "commcard()",
+      "source_file": "src/pages/Communication.jsx",
+      "source_location": "L291"
     },
     {
       "id": "src_pages_communication_communication",
@@ -544,6 +568,18 @@
       "source_location": "L66"
     },
     {
+      "id": "src_pages_communication_peek",
+      "label": "Peek()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Communication.jsx",
+      "file_type": "code",
+      "norm_label": "peek()",
+      "source_file": "src/pages/Communication.jsx",
+      "source_location": "L306"
+    },
+    {
       "id": "src_pages_communication_preview",
       "label": "Preview()",
       "_callable": true,
@@ -553,7 +589,31 @@
       "file_type": "code",
       "norm_label": "preview()",
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L283"
+      "source_location": "L282"
+    },
+    {
+      "id": "src_lib_themedata_gettheme",
+      "label": "getTheme()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Home.jsx",
+      "file_type": "code",
+      "norm_label": "gettheme()",
+      "source_file": "src/lib/themeData.js",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_pages_home_home",
+      "label": "Home()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Home.jsx",
+      "file_type": "code",
+      "norm_label": "home()",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L10"
     },
     {
       "id": "src_pages_home_logoupload",
@@ -674,50 +734,6 @@
       "source_location": "L21"
     },
     {
-      "id": "src_data_balconybasement",
-      "label": "balconyBasement.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "balconybasement.js",
-      "source_file": "src/data/balconyBasement.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_balconybasement_balcony_basement",
-      "label": "BALCONY_BASEMENT",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "balcony_basement",
-      "source_file": "src/data/balconyBasement.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_investmentguides",
-      "label": "investmentGuides.js",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "investmentguides.js",
-      "source_file": "src/data/investmentGuides.js",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_data_investmentguides_investment_guides",
-      "label": "INVESTMENT_GUIDES",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "investment_guides",
-      "source_file": "src/data/investmentGuides.js",
-      "source_location": "L1"
-    },
-    {
       "id": "src_data_themedescriptions",
       "label": "themeDescriptions.js",
       "_origin": "ast",
@@ -773,28 +789,6 @@
       "source_location": "L1"
     },
     {
-      "id": "src_pages_balconiesbasements",
-      "label": "BalconiesBasements.jsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "balconiesbasements.jsx",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_balconiesbasements_places",
-      "label": "PLACES",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "App.jsx",
-      "file_type": "code",
-      "norm_label": "places",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L7"
-    },
-    {
       "id": "src_pages_connectthemes",
       "label": "ConnectThemes.jsx",
       "_origin": "ast",
@@ -826,6 +820,17 @@
       "norm_label": "sounddesk.jsx",
       "source_file": "src/pages/SoundDesk.jsx",
       "source_location": "L1"
+    },
+    {
+      "id": "src_pages_sounddesk_questions",
+      "label": "QUESTIONS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "App.jsx",
+      "file_type": "code",
+      "norm_label": "questions",
+      "source_file": "src/pages/SoundDesk.jsx",
+      "source_location": "L10"
     },
     {
       "id": "src_pages_strengthsstrategy",
@@ -936,61 +941,6 @@
       "norm_label": "private",
       "source_file": "package.json",
       "source_location": "L3"
-    },
-    {
-      "id": "package_scripts",
-      "label": "scripts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "scripts",
-      "source_file": "package.json",
-      "source_location": "L6"
-    },
-    {
-      "id": "package_scripts_build",
-      "label": "build",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "build",
-      "source_file": "package.json",
-      "source_location": "L8"
-    },
-    {
-      "id": "package_scripts_dev",
-      "label": "dev",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "dev",
-      "source_file": "package.json",
-      "source_location": "L7"
-    },
-    {
-      "id": "package_scripts_lint",
-      "label": "lint",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "lint",
-      "source_file": "package.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "package_scripts_preview",
-      "label": "preview",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "preview",
-      "source_file": "package.json",
-      "source_location": "L10"
     },
     {
       "id": "package_type",
@@ -1325,6 +1275,149 @@
       "norm_label": "react + vite",
       "source_file": "README.md",
       "source_location": "L1"
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "scripts",
+      "source_file": "package.json",
+      "source_location": "L6"
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "build",
+      "source_file": "package.json",
+      "source_location": "L8"
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "dev",
+      "source_file": "package.json",
+      "source_location": "L7"
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "lint",
+      "source_file": "package.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "package_scripts_preview",
+      "label": "preview",
+      "_origin": "ast",
+      "community": 12,
+      "community_name": "scripts",
+      "file_type": "code",
+      "norm_label": "preview",
+      "source_file": "package.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_data_balconybasement",
+      "label": "balconyBasement.js",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconybasement.js",
+      "source_file": "src/data/balconyBasement.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_balconybasement_balcony_basement",
+      "label": "BALCONY_BASEMENT",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balcony_basement",
+      "source_file": "src/data/balconyBasement.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_investmentguides",
+      "label": "investmentGuides.js",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "investmentguides.js",
+      "source_file": "src/data/investmentGuides.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_data_investmentguides_investment_guides",
+      "label": "INVESTMENT_GUIDES",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "investment_guides",
+      "source_file": "src/data/investmentGuides.js",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_balconiesbasements",
+      "label": "BalconiesBasements.jsx",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconiesbasements.jsx",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_balconiesbasements_hints",
+      "label": "HINTS",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "hints",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L13"
+    },
+    {
+      "id": "src_pages_balconiesbasements_places",
+      "label": "PLACES",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "places",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_pages_balconiesbasements_steps",
+      "label": "STEPS",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "steps",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L8"
     },
     {
       "id": "postcss_config",
@@ -2607,7 +2700,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L17",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -2619,7 +2712,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/StrengthsStrategy.jsx",
-      "source_location": "L33",
+      "source_location": "L38",
       "weight": 1.0
     },
     {
@@ -2635,42 +2728,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_pages_themedynamics_themedynamics",
-      "target": "src_pages_themedynamics_wedge",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L106",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_themedynamics_themedynamics",
-      "target": "src_pages_themedynamics_crust",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L107",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_themedynamics_themedynamics",
-      "target": "src_pages_themedynamics_polar",
-      "relation": "calls",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "call",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L98",
-      "weight": 1.0
-    },
-    {
       "source": "src_pages_themedynamics_wedge",
       "target": "src_pages_themedynamics_polar",
       "relation": "calls",
@@ -2680,6 +2737,42 @@
       "context": "call",
       "source_file": "src/pages/ThemeDynamics.jsx",
       "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_themedynamics_wheel",
+      "target": "src_pages_themedynamics_polar",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L205",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_themedynamics_wheel",
+      "target": "src_pages_themedynamics_wedge",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L213",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_themedynamics_wheel",
+      "target": "src_pages_themedynamics_crust",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -5092,6 +5185,50 @@
     },
     {
       "source": "src_pages_balconiesbasements",
+      "target": "src_pages_balconiesbasements_hints",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
+      "target": "src_pages_balconiesbasements_balconybasement",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L183",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
+      "target": "src_pages_balconiesbasements_balconiesbasements",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
+      "target": "src_pages_balconiesbasements_preview",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L202",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
       "target": "src_pages_balconiesbasements_places",
       "relation": "contains",
       "_origin": "ast",
@@ -5103,13 +5240,13 @@
     },
     {
       "source": "src_pages_balconiesbasements",
-      "target": "src_pages_balconiesbasements_balconiesbasements",
+      "target": "src_pages_balconiesbasements_steps",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5120,7 +5257,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L283",
+      "source_location": "L282",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_communication",
+      "target": "src_pages_communication_commcard",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/Communication.jsx",
+      "source_location": "L291",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_communication",
+      "target": "src_pages_communication_peek",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/Communication.jsx",
+      "source_location": "L306",
       "weight": 1.0
     },
     {
@@ -5312,7 +5471,7 @@
     },
     {
       "source": "src_pages_sounddesk",
-      "target": "src_pages_sounddesk_sounddesk",
+      "target": "src_pages_sounddesk_questions",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5329,18 +5488,29 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L108",
+      "source_location": "L142",
       "weight": 1.0
     },
     {
       "source": "src_pages_sounddesk",
-      "target": "src_pages_sounddesk_mixcard",
+      "target": "src_pages_sounddesk_sounddesk",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L181",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sounddesk",
+      "target": "src_pages_sounddesk_reflection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/SoundDesk.jsx",
+      "source_location": "L215",
       "weight": 1.0
     },
     {
@@ -5396,6 +5566,17 @@
       "confidence_score": 1.0,
       "source_file": "src/pages/ThemeDynamics.jsx",
       "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_themedynamics",
+      "target": "src_pages_themedynamics_wheel",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L198",
       "weight": 1.0
     },
     {
@@ -5761,5 +5942,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "64691c2ac93cd8d1f06a2a8ff9b4e8acf26bff88"
+  "built_at_commit": "f236cef5acc9f4996eb855340bc553ab934461c6"
 }

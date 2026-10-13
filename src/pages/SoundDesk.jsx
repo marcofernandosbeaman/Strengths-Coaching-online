@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { RotateCcw, Save, Download } from "lucide-react";
+import { RotateCcw, Save, Download, ChevronLeft, Check } from "lucide-react";
 import { BALCONY_BASEMENT } from "@/data/balconyBasement";
 import { THEME_DESCRIPTIONS } from "@/data/themeDescriptions";
 import { PageHeader, PrintHeader, TM } from "@/lib/themes";
@@ -7,36 +7,61 @@ import { PageHeader, PrintHeader, TM } from "@/lib/themes";
 const KNOB = 84; // knob height in px, matches .knob in CSS
 const clamp = (v) => Math.round(Math.min(100, Math.max(0, v)));
 
+const QUESTIONS = [
+  "What do you love about your work?",
+  "Tell me about a recent success or accomplishment.",
+  "What frustrates you about your work?",
+  "How do your strengths help you build relationships?",
+];
+
 export default function SoundDesk({ themes, participant }) {
   const desk = themes.slice(0, 5);
   const [levels, setLevels] = useState({});
   const [info, setInfo] = useState(null);
-  const [note, setNote] = useState("");
-  const [mixes, setMixes] = useState([]);
+  const [q, setQ] = useState(0);
+  const [draft, setDraft] = useState({ answer: "", followUp: "" });
+  const [answers, setAnswers] = useState({});
   const level = (k) => levels[k] ?? 50;
   const setLevel = (k, v) => setLevels((p) => ({ ...p, [k]: clamp(v) }));
 
-  const saveMix = () => {
-    setMixes((m) => [
-      ...m,
-      {
-        time: new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-        levels: desk.map((t) => [t, level(t.key)]),
-        note: note.trim(),
-      },
-    ]);
-    setNote("");
+  // Each question keeps its own answer and fader mix; moving to a question restores it.
+  const goTo = (i) => {
+    const a = answers[i];
+    setQ(i);
+    setDraft({ answer: a?.answer ?? "", followUp: a?.followUp ?? "" });
+    if (a) setLevels(a.levels);
   };
+
+  const save = () => {
+    setAnswers((p) => ({ ...p, [q]: {
+        answer: draft.answer.trim(),
+        followUp: draft.followUp.trim(),
+        levels,
+        mix: desk.map((t) => ({ ...t, value: level(t.key) })),
+      },
+    }));
+    if (q < QUESTIONS.length - 1) {
+      setQ(q + 1);
+      setDraft({ answer: answers[q + 1]?.answer ?? "", followUp: answers[q + 1]?.followUp ?? "" });
+      if (answers[q + 1]) setLevels(answers[q + 1].levels);
+    }
+  };
+
+  const field = (k) => ({ value: draft[k], onChange: (e) => setDraft((d) => ({ ...d, [k]: e.target.value })) });
+  const saved = Object.keys(answers).map(Number).sort((a, b) => a - b);
 
   return (
     <div className="sound-desk">
       <PageHeader
         eyebrow="Activity"
         title="Sound Desk"
-        sub="Mix your themes like a live sound desk. Drag each theme up or down to show how loudly it is playing right now. Double-click a theme to see its description."
+        sub="Mix your themes like a live sound desk. Work through one question at a time and drag each theme up or down to show how loudly it plays in your answer. Double-click a theme to see its description."
       >
         <button className="btn" onClick={() => setLevels({})}>
           <RotateCcw size={15} /> Reset levels
+        </button>
+        <button className="btn primary" onClick={() => window.print()}>
+          <Download size={15} /> Download PDF
         </button>
       </PageHeader>
       <PrintHeader activity="Sound Desk" title="My strengths mix" participant={participant} />
@@ -58,49 +83,58 @@ export default function SoundDesk({ themes, participant }) {
         )}
       </section>
 
-      <section className="desk">
-        {desk.map((t) => (
-          <Channel
-            key={t.key}
-            theme={t}
-            value={level(t.key)}
-            onChange={(v) => setLevel(t.key, v)}
-            onInfo={() => setInfo(t)}
-          />
+      <div className="desk-split no-print">
+        <section className="desk">
+          {desk.map((t) => (
+            <Channel
+              key={t.key}
+              theme={t}
+              value={level(t.key)}
+              onChange={(v) => setLevel(t.key, v)}
+              onInfo={() => setInfo(t)}
+            />
+          ))}
+        </section>
+
+        <aside className="panel no-print">
+          <div className="eyebrow">
+            Guided reflection · {q + 1} of {QUESTIONS.length}
+          </div>
+          <h2>{QUESTIONS[q]}</h2>
+          <p className="muted">Answer, then set the faders to show which themes play loudest here.</p>
+          <div className="form">
+            <label>
+              Your answer
+              <textarea {...field("answer")} />
+            </label>
+            <label>
+              Reflection or follow-up (optional)
+              <textarea {...field("followUp")} placeholder="What do you notice in the mix? What would you dial up?" />
+            </label>
+            <div className="row-end">
+              <button className="btn" disabled={q === 0} onClick={() => goTo(q - 1)}>
+                <ChevronLeft size={15} /> Back
+              </button>
+              <button className="btn primary" onClick={save}>
+                <Save size={15} /> Save reflection
+              </button>
+            </div>
+          </div>
+          {answers[q] && (
+            <div className="status">
+              <Check size={14} /> Reflection saved.
+            </div>
+          )}
+        </aside>
+      </div>
+
+      {/* Screen lists saved reflections; the PDF always shows all four questions. */}
+      <section className={`saved-mixes ${saved.length ? "" : "print-only"}`}>
+        <h2 className="no-print">My reflections</h2>
+        {QUESTIONS.map((question, i) => (
+          <Reflection key={i} n={i + 1} question={question} saved={answers[i]} />
         ))}
       </section>
-
-      <section className="panel desk-notes">
-        <div>
-          <h2>What do you notice about this mix?</h2>
-          <textarea
-            className="no-print"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-            placeholder="Which themes are loud right now? Which would you like to dial up, and what would that change?"
-          />
-          <p className="print-only reflection-text">{note || "Not captured"}</p>
-          <div className="row-end no-print">
-            <button className="btn" onClick={saveMix}>
-              <Save size={15} /> Save mix as note
-            </button>
-            <button className="btn primary" onClick={() => window.print()}>
-              <Download size={15} /> Download PDF
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {mixes.length > 0 && (
-        <section className="saved-mixes no-print">
-          <h2>Saved mixes</h2>
-          <div className="grid-2">
-            {mixes.map((m, i) => (
-              <MixCard key={i} title={`Mix ${i + 1} · ${m.time}`} levels={m.levels} note={m.note} />
-            ))}
-          </div>
-        </section>
-      )}
     </div>
   );
 }
@@ -178,22 +212,38 @@ function Channel({ theme, value, onChange, onInfo }) {
   );
 }
 
-function MixCard({ title, levels, note }) {
+function Reflection({ n, question, saved }) {
   return (
-    <article className="card mix-card">
-      <h3>{title}</h3>
-      {levels.map(([t, v]) => (
-        <div key={t.key} className="mix-row">
-          <span>
-            <TM>{t.name}</TM>
-          </span>
-          <span className="bar">
-            <i style={{ width: `${v}%`, background: t.colour }} />
-          </span>
-          <span className="num">{v}</span>
+    <article className={`reflection ${saved ? "" : "print-only"}`}>
+      {saved ? (
+        <div className="mini-desk">
+          {saved.mix.map((t) => (
+            <div key={t.key} className="mini-ch" style={{ "--accent": t.colour }}>
+              <div className="mini-fader">
+                <span className="mini-knob" style={{ top: `calc((100% - 22px) * ${(100 - t.value) / 100})` }}>
+                  <TM>{t.name}</TM>
+                </span>
+              </div>
+              <b>{t.value}</b>
+            </div>
+          ))}
         </div>
-      ))}
-      {note && <p className="mix-note">{note}</p>}
+      ) : (
+        <div className="mini-desk dashed" />
+      )}
+      <div className="card">
+        <h3>
+          {n}. {question}
+        </h3>
+        <div className="label">Answer</div>
+        <p>{saved?.answer || "Not captured"}</p>
+        {saved?.followUp && (
+          <>
+            <div className="label">Reflection or follow-up</div>
+            <p>{saved.followUp}</p>
+          </>
+        )}
+      </div>
     </article>
   );
 }

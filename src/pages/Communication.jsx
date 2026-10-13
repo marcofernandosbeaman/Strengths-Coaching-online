@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight, Download } from "lucide-react";
 import { COMMUNICATION_STYLES } from "@/data/communicationStyles";
 import { PageHeader, PrintHeader, ThemeChip, TM } from "@/lib/themes";
@@ -68,6 +68,7 @@ export default function Communication({ themes, participant }) {
   const [state, setState] = useState(blank);
   const [si, setSi] = useState(0);
   const [step, setStep] = useState(0);
+  const [peek, setPeek] = useState(null); // { theme, x, y } for the double-click description card
   const x = state[si];
   const name = (k) => themes.find((t) => t.key === k);
 
@@ -113,15 +114,7 @@ export default function Communication({ themes, participant }) {
           </div>
           <div className="comm-grid">
             {themes.map((t) => (
-              <article key={t.key} className="card accent-card" style={{ "--accent": t.colour }}>
-                <h3>
-                  <TM>{t.name}</TM>
-                </h3>
-                <p className="short">{t.blurb}</p>
-                <div className="rule-accent" />
-                <div className="label">How I communicate</div>
-                <p className="quote">{COMMUNICATION_STYLES[t.key]}</p>
-              </article>
+              <CommCard key={t.key} theme={t} />
             ))}
           </div>
           <div className="panel launch">
@@ -169,7 +162,7 @@ export default function Communication({ themes, participant }) {
                 ))}
               </div>
               <h2 className="question">{SCENARIOS[si].q[step]}</h2>
-              <p className="muted">{HINTS[step]}</p>
+              <p className="muted">{HINTS[step]} Double-click a theme to see how it communicates.</p>
               {(step === 0 || step === 3) && (
                 <>
                   <div className="pick-grid">
@@ -178,13 +171,19 @@ export default function Communication({ themes, participant }) {
                         key={t.key}
                         className={`pick-tile ${(step === 0 ? x.themes : x.dial).includes(t.key) ? "on" : ""}`}
                         style={{ "--accent": t.colour }}
-                        onClick={() => togglePick(t.key)}
+                        // Second click of a double-click is ignored so it does not undo the first.
+                        onClick={(e) => e.detail < 2 && togglePick(t.key)}
+                        onDoubleClick={(e) => {
+                          const r = e.currentTarget.getBoundingClientRect();
+                          setPeek({ theme: t, x: r.left, y: r.bottom + 8 });
+                        }}
                       >
                         <TM>{t.name}</TM>
                       </button>
                     ))}
                   </div>
                   {step === 0 && <div className="counter">{x.themes.length} of 3 selected</div>}
+                  {peek && <Peek {...peek} onClose={() => setPeek(null)} />}
                 </>
               )}
               {step > 0 && (
@@ -286,5 +285,44 @@ function Preview({ label, children }) {
       <div className="label">{label}</div>
       <div>{children}</div>
     </div>
+  );
+}
+
+function CommCard({ theme: t, ...rest }) {
+  return (
+    <article className="card accent-card" style={{ "--accent": t.colour }} {...rest}>
+      <h3>
+        <TM>{t.name}</TM>
+      </h3>
+      <p className="short">{t.blurb}</p>
+      <div className="rule-accent" />
+      <div className="label">How I communicate</div>
+      <p className="quote">{COMMUNICATION_STYLES[t.key]}</p>
+    </article>
+  );
+}
+
+// Floating description card under the double-clicked tile; closes on outside click, scroll or Escape.
+function Peek({ theme, x, y, onClose }) {
+  useEffect(() => {
+    const close = (e) => (e.type !== "keydown" || e.key === "Escape") && onClose();
+    const t = setTimeout(() => document.addEventListener("click", close));
+    window.addEventListener("keydown", close);
+    window.addEventListener("scroll", close, true);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener("click", close);
+      window.removeEventListener("keydown", close);
+      window.removeEventListener("scroll", close, true);
+    };
+  }, [theme, onClose]);
+  return (
+    <CommCard
+      theme={theme}
+      className="card accent-card peek"
+      role="dialog"
+      aria-label={theme.name}
+      style={{ "--accent": theme.colour, left: Math.min(x, window.innerWidth - 300), top: y }}
+    />
   );
 }

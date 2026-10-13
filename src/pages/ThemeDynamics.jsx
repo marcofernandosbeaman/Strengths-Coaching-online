@@ -21,7 +21,6 @@ const crust = (s, e) => {
 const blank = { notice: "", possible: "", name: "" };
 
 export default function ThemeDynamics({ themes, participant }) {
-  const [success, setSuccess] = useState("");
   const [picked, setPicked] = useState([]);
   const [form, setForm] = useState(blank);
   const [packages, setPackages] = useState([]);
@@ -51,8 +50,6 @@ export default function ThemeDynamics({ themes, participant }) {
     setSaved(true);
   };
 
-  const span = 360 / Math.max(themes.length, 1);
-
   return (
     <div>
       <PageHeader
@@ -61,20 +58,6 @@ export default function ThemeDynamics({ themes, participant }) {
         sub="Explore how your themes work together, complement one another and contribute to success."
       />
       <PrintHeader activity="Theme Dynamics" title="My explored theme packages" participant={participant} />
-
-      <section className="panel success-row">
-        <label>
-          Start with a recent success
-          <small>An activity, conversation, achievement or challenge that mattered.</small>
-        </label>
-        <textarea
-          className="no-print"
-          value={success}
-          onChange={(e) => setSuccess(e.target.value)}
-          placeholder="Example: I facilitated an important workshop and helped the group turn a wide range of ideas into a clear direction."
-        />
-        <p className="print-only success-text">{success || "Not captured"}</p>
-      </section>
 
       <section className="split no-print">
         <article className="panel">
@@ -91,36 +74,14 @@ export default function ThemeDynamics({ themes, participant }) {
             <p className="muted">Choose at least two themes on Home to use the wheel.</p>
           ) : (
             <div className="wheel-wrap">
-              <div className={`wheel ${themes.length > 6 ? "dense" : ""}`}>
-                <svg viewBox="0 0 472 472">
-                  {themes.map((t, i) => {
-                    const s = i * span;
-                    const p = polar(152, s + span / 2);
-                    return (
-                      <g
-                        key={t.key}
-                        className={`slice ${picked.includes(t.key) ? "selected" : ""}`}
-                        onClick={() => toggle(t.key)}
-                        onDoubleClick={() => setReminder(t)}
-                      >
-                        <path className="wedge" d={wedge(s, s + span)} />
-                        <path className="crust" d={crust(s, s + span)} stroke={t.colour} />
-                        <text x={p.x} y={p.y + 4}>
-                          {t.name}®
-                        </text>
-                      </g>
-                    );
-                  })}
-                </svg>
-                <div className="wheel-centre">
-                  <b>{picked.length ? "Theme package" : "Your themes"}</b>
-                  <span>
-                    {picked.length
-                      ? `${picked.length} selected`
-                      : "Select themes to explore how they work together."}
-                  </span>
-                </div>
-              </div>
+              <Wheel themes={themes} picked={picked} onToggle={toggle} onInfo={setReminder}>
+                <b>{picked.length ? "Theme package" : "Your themes"}</b>
+                <span>
+                  {picked.length
+                    ? `${picked.length} selected`
+                    : "Select themes to explore how they work together."}
+                </span>
+              </Wheel>
             </div>
           )}
           <div className="hint">
@@ -202,6 +163,7 @@ export default function ThemeDynamics({ themes, participant }) {
                   "--bar": `linear-gradient(90deg, ${p.themes.map((t) => t.colour).join(", ")}${p.themes.length === 1 ? `, ${p.themes[0].colour}` : ""})`,
                 }}
               >
+                <Wheel themes={themes} picked={p.themes.map((t) => t.key)} mini />
                 <h3>{p.name}</h3>
                 <div className="combo">
                   {p.themes.map((t, j) => (
@@ -221,13 +183,43 @@ export default function ThemeDynamics({ themes, participant }) {
         )}
         {packages.length > 0 && (
           <div className="download-bar no-print">
-            <p>Download the recent success and all saved theme packages as a one-page summary.</p>
+            <p>Download all saved theme packages as a one-page summary.</p>
             <button className="btn primary" onClick={() => window.print()}>
               <Download size={15} /> Download session PDF
             </button>
           </div>
         )}
       </section>
+    </div>
+  );
+}
+
+// Interactive theme wheel; `mini` renders a static snapshot of a saved package (used on cards and in the PDF).
+function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
+  const span = 360 / Math.max(themes.length, 1);
+  return (
+    <div className={`wheel ${themes.length > 6 ? "dense" : ""} ${mini ? "mini" : ""}`} aria-hidden={mini || undefined}>
+      <svg viewBox="0 0 472 472">
+        {themes.map((t, i) => {
+          const s = i * span;
+          const p = polar(152, s + span / 2);
+          return (
+            <g
+              key={t.key}
+              className={`slice ${picked.includes(t.key) ? "selected" : ""}`}
+              onClick={onToggle && (() => onToggle(t.key))}
+              onDoubleClick={onInfo && (() => onInfo(t))}
+            >
+              <path className="wedge" d={wedge(s, s + span)} />
+              <path className="crust" d={crust(s, s + span)} stroke={t.colour} />
+              <text x={p.x} y={p.y + 4}>
+                {t.name}®
+              </text>
+            </g>
+          );
+        })}
+      </svg>
+      {!mini && <div className="wheel-centre">{children}</div>}
     </div>
   );
 }
