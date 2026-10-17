@@ -21,13 +21,9 @@ const crust = (s, e) => {
 
 const blank = { notice: "", possible: "", name: "" };
 
-<<<<<<< HEAD
 export default function ThemeDynamics({ themes: allThemes, participant }) {
   const [size, setSize] = useState(10); // Top 5 or Top 10 wheel; only offered with more than five themes
   const themes = allThemes.slice(0, allThemes.length > 5 ? size : 5);
-=======
-export default function ThemeDynamics({ themes, participant }) {
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
   const [picked, setPicked] = useState([]);
   const [form, setForm] = useState(blank);
   const [packages, setPackages] = useState([]);
@@ -66,7 +62,6 @@ export default function ThemeDynamics({ themes, participant }) {
       />
       <PrintHeader activity="Theme Dynamics" title="My explored theme packages" participant={participant} />
 
-<<<<<<< HEAD
       {themes.length >= 2 && (
         <div className="print-only print-wheel">
           <Wheel themes={themes} picked={[]}>
@@ -76,8 +71,6 @@ export default function ThemeDynamics({ themes, participant }) {
         </div>
       )}
 
-=======
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
       <section className="split no-print">
         <article className="panel">
           <div className="section-head">
@@ -111,17 +104,10 @@ export default function ThemeDynamics({ themes, participant }) {
           ) : (
             <div className="wheel-wrap">
               <Wheel themes={themes} picked={picked} onToggle={toggle} onInfo={setReminder}>
-<<<<<<< HEAD
                 <b>{pickedThemes.length ? "Theme package" : "Your themes"}</b>
                 <span>
                   {pickedThemes.length
                     ? `${pickedThemes.length} selected`
-=======
-                <b>{picked.length ? "Theme package" : "Your themes"}</b>
-                <span>
-                  {picked.length
-                    ? `${picked.length} selected`
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
                     : "Select themes to explore how they work together."}
                 </span>
               </Wheel>
@@ -206,7 +192,6 @@ export default function ThemeDynamics({ themes, participant }) {
                   "--bar": `linear-gradient(90deg, ${p.themes.map((t) => t.colour).join(", ")}${p.themes.length === 1 ? `, ${p.themes[0].colour}` : ""})`,
                 }}
               >
-                <Wheel themes={themes} picked={p.themes.map((t) => t.key)} mini />
                 <h3>{p.name}</h3>
                 <div className="combo">
                   {p.themes.map((t, j) => (
@@ -227,11 +212,7 @@ export default function ThemeDynamics({ themes, participant }) {
         {packages.length > 0 && (
           <div className="download-bar no-print">
             <p>Download all saved theme packages as a one-page summary.</p>
-<<<<<<< HEAD
             <button className="btn primary" onClick={() => printPdf(participant, "Theme Dynamics")}>
-=======
-            <button className="btn primary" onClick={() => window.print()}>
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
               <Download size={15} /> Download session PDF
             </button>
           </div>
@@ -241,20 +222,12 @@ export default function ThemeDynamics({ themes, participant }) {
   );
 }
 
-<<<<<<< HEAD
 // Theme wheel: coloured outer edge on every slice, white centre circle drawn in the SVG so it
 // stays exactly centred at any size or zoom; the HTML label sits inside the same square.
 function Wheel({ themes, picked, onToggle, onInfo, children }) {
   const span = 360 / Math.max(themes.length, 1);
   return (
     <div className={`wheel ${themes.length > 6 ? "dense" : ""}`}>
-=======
-// Interactive theme wheel; `mini` renders a static snapshot of a saved package (used on cards and in the PDF).
-function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
-  const span = 360 / Math.max(themes.length, 1);
-  return (
-    <div className={`wheel ${themes.length > 6 ? "dense" : ""} ${mini ? "mini" : ""}`} aria-hidden={mini || undefined}>
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
       <svg viewBox="0 0 472 472">
         {themes.map((t, i) => {
           const s = i * span;
@@ -274,14 +247,9 @@ function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
             </g>
           );
         })}
-<<<<<<< HEAD
         <circle className="hub" cx={C} cy={C} r={80} />
       </svg>
       <div className="wheel-centre">{children}</div>
-=======
-      </svg>
-      {!mini && <div className="wheel-centre">{children}</div>}
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
     </div>
   );
 }

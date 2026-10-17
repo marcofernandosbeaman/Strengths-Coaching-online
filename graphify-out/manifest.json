@@ -18,15 +18,9 @@
     "semantic_hash": ""
   },
   "src/App.jsx": {
-<<<<<<< HEAD
     "mtime": 1792120366.5972073,
     "seen": 1792120373.381904,
     "ast_hash": "3e410b0bdba47ba0b9b181d45c1706f6",
-=======
-    "mtime": 1791895601.0371327,
-    "seen": 1791896076.3715515,
-    "ast_hash": "4924e8d317336c90c45eb00cdf42d02f",
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
     "semantic_hash": ""
   },
   "src/data/balconyBasement.js": {
@@ -96,7 +90,6 @@
     "semantic_hash": ""
   },
   "src/pages/BalconiesBasements.jsx": {
-<<<<<<< HEAD
     "mtime": 1792137153.9631474,
     "seen": 1792137193.7398124,
     "ast_hash": "83dc7cf6aa30542312f41b5d7b05831b",
@@ -106,17 +99,6 @@
     "mtime": 1792135988.2443109,
     "seen": 1792135995.2348335,
     "ast_hash": "5a5d5c2d1118e35b63aa1a57a474bbed",
-=======
-    "mtime": 1791896468.9615989,
-    "seen": 1791896558.2477694,
-    "ast_hash": "6a8c6bc88ab2797348389f8ba69fa310",
-    "semantic_hash": ""
-  },
-  "src/pages/Communication.jsx": {
-    "mtime": 1791887175.7746563,
-    "seen": 1791887182.8478239,
-    "ast_hash": "896c3cf6dd3ffddd7978173e5e811f31",
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
     "semantic_hash": ""
   },
   "src/pages/ConnectThemes.jsx": {
@@ -132,7 +114,6 @@
     "semantic_hash": ""
   },
   "src/pages/SoundDesk.jsx": {
-<<<<<<< HEAD
     "mtime": 1792121233.9354072,
     "seen": 1792121240.9312983,
     "ast_hash": "68d88d21fb0dd97a7c587fa43a27aa92",
@@ -148,23 +129,6 @@
     "mtime": 1792136629.9512193,
     "seen": 1792136669.0787961,
     "ast_hash": "2916b967628303471582b75e75df63f5",
-=======
-    "mtime": 1791878477.0257118,
-    "seen": 1791878523.260433,
-    "ast_hash": "e7e19ff8dfe73a5231d56d0bb70f0571",
-    "semantic_hash": ""
-  },
-  "src/pages/StrengthsStrategy.jsx": {
-    "mtime": 1791895987.5073986,
-    "seen": 1791896076.3715684,
-    "ast_hash": "70c175c0c0b7bd79c5f1406aa782fd53",
-    "semantic_hash": ""
-  },
-  "src/pages/ThemeDynamics.jsx": {
-    "mtime": 1791887610.7279212,
-    "seen": 1791887617.7350616,
-    "ast_hash": "b35cad67097e92ff0038cec23133e094",
->>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
     "semantic_hash": ""
   },
   "tailwind.config.js": {
