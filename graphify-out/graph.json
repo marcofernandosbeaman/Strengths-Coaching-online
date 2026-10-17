@@ -349,7 +349,7 @@
       "file_type": "code",
       "norm_label": "balconybasement()",
       "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L269"
+      "source_location": "L284"
     },
     {
       "id": "src_pages_balconiesbasements_explored",
@@ -373,7 +373,7 @@
       "file_type": "code",
       "norm_label": "rating()",
       "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L237"
+      "source_location": "L252"
     },
     {
       "id": "src_pages_sounddesk_actions",
@@ -4798,17 +4798,6 @@
     },
     {
       "source": "src_pages_balconiesbasements",
-      "target": "src_pages_balconiesbasements_rating",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L237",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_balconiesbasements",
       "target": "src_pages_balconiesbasements_balconiesbasements",
       "relation": "contains",
       "_origin": "ast",
@@ -4820,13 +4809,24 @@
     },
     {
       "source": "src_pages_balconiesbasements",
+      "target": "src_pages_balconiesbasements_rating",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L252",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
       "target": "src_pages_balconiesbasements_balconybasement",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L269",
+      "source_location": "L284",
       "weight": 1.0
     },
     {
@@ -5509,5 +5509,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9ab88b1265cf2a77347a8e5744737f43d8c6a34e"
+  "built_at_commit": "1cb54f2bbcab41abcbd323363d02a6bd545c182a"
 }

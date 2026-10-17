@@ -1,7 +1,7 @@
-# Graph Report - Strengths-Coaching-online  (2026-10-16)
+# Graph Report - Strengths-Coaching-online  (2026-10-18)
 
 ## Corpus Check
-- 30 files · ~16,510 words
+- 30 files · ~16,656 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: .example 1, (none) 1, .css 1)
 
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `9ab88b12`
+- Built from commit: `1cb54f2b`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
