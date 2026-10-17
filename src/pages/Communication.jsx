@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Download, X } from "lucide-react";
 import { COMMUNICATION_STYLES } from "@/data/communicationStyles";
 import { PageHeader, PrintHeader, ThemeChip, TM } from "@/lib/themes";
+import { printPdf } from "@/lib/print";
 
 const SCENARIOS = [
   {
@@ -68,7 +69,9 @@ export default function Communication({ themes, participant }) {
   const [state, setState] = useState(blank);
   const [si, setSi] = useState(0);
   const [step, setStep] = useState(0);
-  const [peek, setPeek] = useState(null); // { theme, x, y } for the double-click description card
+  const [peek, setPeek] = useState(null); // theme whose description card is open on the question screen
+  const [showAll, setShowAll] = useState(false); // theme cards: first five, rest tucked underneath
+  const beforeClick = useRef(null); // selection before the first click of a possible double-click
   const x = state[si];
   const name = (k) => themes.find((t) => t.key === k);
 
@@ -113,10 +116,27 @@ export default function Communication({ themes, participant }) {
             <span className="pill">Stage 1 of 2 · Explore</span>
           </div>
           <div className="comm-grid">
-            {themes.map((t) => (
+            {(showAll ? themes : themes.slice(0, 5)).map((t) => (
               <CommCard key={t.key} theme={t} />
             ))}
           </div>
+          {themes.length > 5 && (
+            <button
+              className={`comm-more ${showAll ? "open" : ""}`}
+              aria-expanded={showAll}
+              onClick={() => setShowAll(!showAll)}
+            >
+              {showAll ? (
+                <>
+                  Show fewer <ChevronUp size={14} />
+                </>
+              ) : (
+                <>
+                  Show {themes.length - 5} more themes <ChevronDown size={14} />
+                </>
+              )}
+            </button>
+          )}
           <div className="panel launch">
             <div>
               <h3>Explore your communication in different situations</h3>
@@ -171,11 +191,16 @@ export default function Communication({ themes, participant }) {
                         key={t.key}
                         className={`pick-tile ${(step === 0 ? x.themes : x.dial).includes(t.key) ? "on" : ""}`}
                         style={{ "--accent": t.colour }}
-                        // Second click of a double-click is ignored so it does not undo the first.
-                        onClick={(e) => e.detail < 2 && togglePick(t.key)}
-                        onDoubleClick={(e) => {
-                          const r = e.currentTarget.getBoundingClientRect();
-                          setPeek({ theme: t, x: r.left, y: r.bottom + 8 });
+                        onClick={(e) => {
+                          if (e.detail > 1) return; // second click of a double-click
+                          beforeClick.current = { themes: x.themes, dial: x.dial };
+                          togglePick(t.key);
+                        }}
+                        // Double-click opens or closes the description and undoes the first click's toggle,
+                        // so the selection is unchanged.
+                        onDoubleClick={() => {
+                          if (beforeClick.current) update(beforeClick.current);
+                          setPeek(peek?.key === t.key ? null : t);
                         }}
                       >
                         <TM>{t.name}</TM>
@@ -183,7 +208,14 @@ export default function Communication({ themes, participant }) {
                     ))}
                   </div>
                   {step === 0 && <div className="counter">{x.themes.length} of 3 selected</div>}
-                  {peek && <Peek {...peek} onClose={() => setPeek(null)} />}
+                  {peek && (
+                    <div className="peek">
+                      <button className="peek-close" aria-label="Close description" onClick={() => setPeek(null)}>
+                        <X size={15} />
+                      </button>
+                      <CommCard theme={peek} aria-live="polite" />
+                    </div>
+                  )}
                 </>
               )}
               {step > 0 && (
@@ -270,7 +302,7 @@ export default function Communication({ themes, participant }) {
           >
             Start again
           </button>
-          <button className="btn primary" onClick={() => window.print()}>
+          <button className="btn primary" onClick={() => printPdf(participant, "Strengths & Communication")}>
             <Download size={15} /> Download one-page PDF
           </button>
         </div>
@@ -302,27 +334,3 @@ function CommCard({ theme: t, ...rest }) {
   );
 }
 
-// Floating description card under the double-clicked tile; closes on outside click, scroll or Escape.
-function Peek({ theme, x, y, onClose }) {
-  useEffect(() => {
-    const close = (e) => (e.type !== "keydown" || e.key === "Escape") && onClose();
-    const t = setTimeout(() => document.addEventListener("click", close));
-    window.addEventListener("keydown", close);
-    window.addEventListener("scroll", close, true);
-    return () => {
-      clearTimeout(t);
-      document.removeEventListener("click", close);
-      window.removeEventListener("keydown", close);
-      window.removeEventListener("scroll", close, true);
-    };
-  }, [theme, onClose]);
-  return (
-    <CommCard
-      theme={theme}
-      className="card accent-card peek"
-      role="dialog"
-      aria-label={theme.name}
-      style={{ "--accent": theme.colour, left: Math.min(x, window.innerWidth - 300), top: y }}
-    />
-  );
-}

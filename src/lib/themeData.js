@@ -2,6 +2,8 @@ import { STRENGTHS } from "@/data/strengths";
 import { THEME_TO_DOMAIN, DOMAIN_COLORS } from "@/data/themeDomains";
 
 export const MAX_THEMES = 10;
+// Supported selections: a single theme, or five to ten themes.
+export const validCount = (n) => n === 1 || (n >= 5 && n <= MAX_THEMES);
 
 const BY_KEY = Object.fromEntries(
   STRENGTHS.map((s) => {

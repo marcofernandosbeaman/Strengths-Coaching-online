@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Download } from "lucide-react";
+import { THEME_DESCRIPTIONS } from "@/data/themeDescriptions";
 import { PageHeader, PrintHeader, TM } from "@/lib/themes";
+import { printPdf } from "@/lib/print";
 import { listJoin } from "@/lib/themeData";
 
 const LANES = [
@@ -15,6 +17,7 @@ export default function StrengthsStrategy({ themes, participant }) {
   const [rating, setRating] = useState({ importance: 5, motivation: 5 }); // 1–10
   const [lanes, setLanes] = useState({ help: [], both: [], hinder: [] }); // laneId -> themeKeys in the user's chosen order
   const [held, setHeld] = useState(null); // tap-to-place for touch screens
+  const [info, setInfo] = useState(null); // theme shown in the description card (double-click)
   const [insight, setInsight] = useState("");
   const [action, setAction] = useState("");
 
@@ -63,6 +66,12 @@ export default function StrengthsStrategy({ themes, participant }) {
         if (lane && held && held !== t.key) place(held, lane, t.key);
         else setHeld(held === t.key ? null : t.key);
       }}
+      // The two clicks pick up and put down the same tile, so a double-click only opens the description.
+      onDoubleClick={(e) => {
+        e.stopPropagation();
+        setHeld(null);
+        setInfo(t);
+      }}
     >
       <TM>{t.name}</TM>
     </button>
@@ -103,18 +112,24 @@ export default function StrengthsStrategy({ themes, participant }) {
             ["importance", "How important is this to you?"],
             ["motivation", "How motivated are you to take action?"],
           ].map(([k, q]) => (
-            <label key={k} className="rating">
-              <span>{q}</span>
-              <input
-                className="no-print"
-                type="range"
-                min={1}
-                max={10}
-                value={rating[k]}
-                onChange={(e) => setRating((r) => ({ ...r, [k]: +e.target.value }))}
-              />
+            <div key={k} className="rating">
+              <span id={`rating-${k}`}>{q}</span>
+              {/* Segmented 1–10 scale: dots up to the chosen value are filled. */}
+              <div className="dots" role="radiogroup" aria-labelledby={`rating-${k}`}>
+                {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
+                  <button
+                    key={n}
+                    type="button"
+                    role="radio"
+                    aria-checked={rating[k] === n}
+                    aria-label={`${n} out of 10`}
+                    className={n <= rating[k] ? "on" : ""}
+                    onClick={() => setRating((r) => ({ ...r, [k]: n }))}
+                  />
+                ))}
+              </div>
               <b>{rating[k]}/10</b>
-            </label>
+            </div>
           ))}
         </div>
       </section>
@@ -128,6 +143,23 @@ export default function StrengthsStrategy({ themes, participant }) {
           {themes.length - bank.length} of {themes.length} explored
         </span>
       </div>
+      {/* Same description card as the Sound Desk. */}
+      <section
+        className={`theme-card no-print ${info ? "show" : ""}`}
+        style={{ "--accent": info?.colour }}
+        aria-live="polite"
+      >
+        {info ? (
+          <>
+            <h3>
+              <TM>{info.name}</TM>
+            </h3>
+            <p>{THEME_DESCRIPTIONS[info.key]}</p>
+          </>
+        ) : (
+          <p className="muted">Double-click a theme to see its brief description.</p>
+        )}
+      </section>
       <section className={`bank no-print ${held ? "holding" : ""}`} {...dropProps(null)}>
         {bank.map((t) => tile(t))}
         {!bank.length && <span className="muted">All themes placed. Drag one back here to remove it.</span>}
@@ -171,7 +203,7 @@ export default function StrengthsStrategy({ themes, participant }) {
         </article>
       </section>
       <div className="row-end no-print">
-        <button className="btn primary" onClick={() => window.print()}>
+        <button className="btn primary" onClick={() => printPdf(participant, "Strengths Strategy")}>
           <Download size={15} /> Create one-page PDF
         </button>
       </div>

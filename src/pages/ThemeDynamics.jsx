@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Download, Check } from "lucide-react";
 import { PageHeader, PrintHeader, ThemeChip, TM } from "@/lib/themes";
+import { printPdf } from "@/lib/print";
 
 const MAX_PICK = 5;
 const C = 236; // wheel centre in the 472 viewBox
@@ -20,7 +21,9 @@ const crust = (s, e) => {
 
 const blank = { notice: "", possible: "", name: "" };
 
-export default function ThemeDynamics({ themes, participant }) {
+export default function ThemeDynamics({ themes: allThemes, participant }) {
+  const [size, setSize] = useState(10); // Top 5 or Top 10 wheel; only offered with more than five themes
+  const themes = allThemes.slice(0, allThemes.length > 5 ? size : 5);
   const [picked, setPicked] = useState([]);
   const [form, setForm] = useState(blank);
   const [packages, setPackages] = useState([]);
@@ -31,7 +34,7 @@ export default function ThemeDynamics({ themes, participant }) {
     onChange: (e) => setForm((f) => ({ ...f, [k]: e.target.value })),
   });
 
-  const pickedThemes = themes.filter((t) => picked.includes(t.key));
+  const pickedThemes = themes.filter((t) => picked.includes(t.key)); // drops picks outside a Top 5 wheel
   const toggle = (k) => {
     setSaved(false);
     setPicked((p) =>
@@ -51,13 +54,22 @@ export default function ThemeDynamics({ themes, participant }) {
   };
 
   return (
-    <div>
+    <div className="theme-dynamics">
       <PageHeader
         eyebrow="Activity"
         title="Theme Dynamics"
         sub="Explore how your themes work together, complement one another and contribute to success."
       />
       <PrintHeader activity="Theme Dynamics" title="My explored theme packages" participant={participant} />
+
+      {themes.length >= 2 && (
+        <div className="print-only print-wheel">
+          <Wheel themes={themes} picked={[]}>
+            <b>Theme package</b>
+            <span>Top {themes.length}</span>
+          </Wheel>
+        </div>
+      )}
 
       <section className="split no-print">
         <article className="panel">
@@ -66,19 +78,36 @@ export default function ThemeDynamics({ themes, participant }) {
               <h2>Your theme package</h2>
               <p>Select up to five slices. Double-click a slice for a short reminder.</p>
             </div>
-            <span className="pill">
-              {picked.length} of {MAX_PICK} selected
-            </span>
+            <div className="wheel-tools">
+              {allThemes.length > 5 && (
+                <div className="segmented" role="radiogroup" aria-label="Wheel size">
+                  {[5, 10].map((n) => (
+                    <button
+                      key={n}
+                      role="radio"
+                      aria-checked={size === n}
+                      className={size === n ? "on" : ""}
+                      onClick={() => setSize(n)}
+                    >
+                      Top {n}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <span className="pill">
+                {pickedThemes.length} of {MAX_PICK} selected
+              </span>
+            </div>
           </div>
           {themes.length < 2 ? (
             <p className="muted">Choose at least two themes on Home to use the wheel.</p>
           ) : (
             <div className="wheel-wrap">
               <Wheel themes={themes} picked={picked} onToggle={toggle} onInfo={setReminder}>
-                <b>{picked.length ? "Theme package" : "Your themes"}</b>
+                <b>{pickedThemes.length ? "Theme package" : "Your themes"}</b>
                 <span>
-                  {picked.length
-                    ? `${picked.length} selected`
+                  {pickedThemes.length
+                    ? `${pickedThemes.length} selected`
                     : "Select themes to explore how they work together."}
                 </span>
               </Wheel>
@@ -163,7 +192,6 @@ export default function ThemeDynamics({ themes, participant }) {
                   "--bar": `linear-gradient(90deg, ${p.themes.map((t) => t.colour).join(", ")}${p.themes.length === 1 ? `, ${p.themes[0].colour}` : ""})`,
                 }}
               >
-                <Wheel themes={themes} picked={p.themes.map((t) => t.key)} mini />
                 <h3>{p.name}</h3>
                 <div className="combo">
                   {p.themes.map((t, j) => (
@@ -184,7 +212,7 @@ export default function ThemeDynamics({ themes, participant }) {
         {packages.length > 0 && (
           <div className="download-bar no-print">
             <p>Download all saved theme packages as a one-page summary.</p>
-            <button className="btn primary" onClick={() => window.print()}>
+            <button className="btn primary" onClick={() => printPdf(participant, "Theme Dynamics")}>
               <Download size={15} /> Download session PDF
             </button>
           </div>
@@ -194,11 +222,12 @@ export default function ThemeDynamics({ themes, participant }) {
   );
 }
 
-// Interactive theme wheel; `mini` renders a static snapshot of a saved package (used on cards and in the PDF).
-function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
+// Theme wheel: coloured outer edge on every slice, white centre circle drawn in the SVG so it
+// stays exactly centred at any size or zoom; the HTML label sits inside the same square.
+function Wheel({ themes, picked, onToggle, onInfo, children }) {
   const span = 360 / Math.max(themes.length, 1);
   return (
-    <div className={`wheel ${themes.length > 6 ? "dense" : ""} ${mini ? "mini" : ""}`} aria-hidden={mini || undefined}>
+    <div className={`wheel ${themes.length > 6 ? "dense" : ""}`}>
       <svg viewBox="0 0 472 472">
         {themes.map((t, i) => {
           const s = i * span;
@@ -218,8 +247,9 @@ function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
             </g>
           );
         })}
+        <circle className="hub" cx={C} cy={C} r={80} />
       </svg>
-      {!mini && <div className="wheel-centre">{children}</div>}
+      <div className="wheel-centre">{children}</div>
     </div>
   );
 }

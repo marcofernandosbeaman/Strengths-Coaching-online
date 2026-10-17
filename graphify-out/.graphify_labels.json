@@ -1,5 +1,5 @@
 {
-  "0": "App.jsx",
+  "0": "ConnectThemes.jsx",
   "1": "package.json",
   "2": "postcss.config.js",
   "3": "Communication.jsx",
@@ -8,9 +8,9 @@
   "6": "Soundboard Updates – Developer Handover",
   "7": "Home.jsx",
   "8": "tailwind.config.js",
-  "9": "jRPe_$pro",
+  "9": "investmentGuides.js",
   "10": "React + Vite",
-  "11": "polar",
+  "11": "App.jsx",
   "12": "scripts",
-  "13": "BalconiesBasements.jsx"
+  "13": "SoundDesk.jsx"
 }

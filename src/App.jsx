@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Home as HomeIcon,
   SlidersVertical,
@@ -9,7 +10,8 @@ import {
 } from "lucide-react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { TM } from "@/lib/themes";
-import { getTheme } from "@/lib/themeData";
+import { authEnabled, signOut } from "@/lib/supabase";
+import { getTheme, validCount } from "@/lib/themeData";
 import Home from "@/pages/Home";
 import SoundDesk from "@/pages/SoundDesk";
 import ThemeDynamics from "@/pages/ThemeDynamics";
@@ -64,10 +66,19 @@ const PAGES = [
   },
 ];
 
+// Remove participant data stored by earlier versions so it does not linger in the browser.
+try {
+  ["hub:page", "hub:themes", "hub:participant"].forEach((k) => localStorage.removeItem(k));
+} catch {
+  // Storage unavailable; nothing to clean.
+}
+
 export default function App() {
-  const [page, setPage] = useLocalStorage("hub:page", "home");
-  const [selected, setSelected] = useLocalStorage("hub:themes", []);
-  const [participant, setParticipant] = useLocalStorage("hub:participant", "");
+  // Each visit is a fresh participant session: page, name and themes live in memory only.
+  // Only the PDF logo persists, so the coach does not re-upload it.
+  const [page, setPage] = useState("home");
+  const [selected, setSelected] = useState([]);
+  const [participant, setParticipant] = useState("");
   const [logo, setLogo] = useLocalStorage("hub:logo", "");
   const themes = selected.map(getTheme).filter(Boolean);
 
@@ -111,6 +122,11 @@ export default function App() {
             </button>
           </div>
         )}
+        {authEnabled && (
+          <button className="link sign-out" onClick={signOut}>
+            Sign out
+          </button>
+        )}
       </aside>
 
       <main className="main">
@@ -118,7 +134,7 @@ export default function App() {
         {logo && <img className="print-only print-logo" src={logo} alt="" />}
         {PAGES.map(({ id, Page }) => {
           // Pages stay mounted so session notes survive switching activities.
-          const needsThemes = id !== "home" && themes.length === 0;
+          const needsThemes = id !== "home" && !validCount(themes.length);
           return (
             <div key={id} hidden={page !== id}>
               {needsThemes ? (
@@ -158,8 +174,8 @@ function NoThemes({ onGo }) {
     <div className="empty-page">
       <h2>Choose your themes first</h2>
       <p>
-        Select your themes once on the Home page and they will be ready in every
-        activity.
+        Select 1 theme, or 5 to 10 themes, on the Home page and they will be ready
+        in every activity.
       </p>
       <button className="btn primary" onClick={onGo}>
         Choose my themes

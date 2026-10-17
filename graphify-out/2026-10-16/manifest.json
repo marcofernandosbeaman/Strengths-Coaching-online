@@ -1,0 +1,200 @@
+{
+  "eslint.config.js": {
+    "mtime": 1791513524.7890613,
+    "seen": 1791513648.236016,
+    "ast_hash": "2016ec085c55b34a48ef77bd944a0849",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1792120161.7286575,
+    "seen": 1792120201.5309095,
+    "ast_hash": "0ab8f3979310149baef360f15ff56311",
+    "semantic_hash": ""
+  },
+  "postcss.config.js": {
+    "mtime": 1792121303.456715,
+    "seen": 1792135995.2348108,
+    "ast_hash": "6d787f7d4ddbb943db3480f724aa3fc5",
+    "semantic_hash": ""
+  },
+  "src/App.jsx": {
+    "mtime": 1792120366.5972073,
+    "seen": 1792120373.381904,
+    "ast_hash": "3e410b0bdba47ba0b9b181d45c1706f6",
+    "semantic_hash": ""
+  },
+  "src/data/balconyBasement.js": {
+    "mtime": 1791512920.3178148,
+    "seen": 1791513648.2360246,
+    "ast_hash": "9e3afd0f3e09eb6b12806873bbf28e7a",
+    "semantic_hash": ""
+  },
+  "src/data/communicationStyles.js": {
+    "mtime": 1791512920.318319,
+    "seen": 1791513648.2360256,
+    "ast_hash": "4a6ea64d9bcfe2b296090893ecab5426",
+    "semantic_hash": ""
+  },
+  "src/data/investmentGuides.js": {
+    "mtime": 1791512920.318319,
+    "seen": 1791513648.2360263,
+    "ast_hash": "dc6c3283c3720754e4602cb5e248753a",
+    "semantic_hash": ""
+  },
+  "src/data/strengths.js": {
+    "mtime": 1791513480.461454,
+    "seen": 1791513648.2360272,
+    "ast_hash": "0e38cbb98ffefa40ea42405bf1189035",
+    "semantic_hash": ""
+  },
+  "src/data/theme-questions.json": {
+    "mtime": 1791512920.3193214,
+    "seen": 1791513648.236028,
+    "ast_hash": "857da1449ad9d23ec974164b92f0ba50",
+    "semantic_hash": ""
+  },
+  "src/data/theme-traits.json": {
+    "mtime": 1791512920.3193214,
+    "seen": 1791513648.236029,
+    "ast_hash": "abbec4d15cc0ea83e3d64afc26aab8a0",
+    "semantic_hash": ""
+  },
+  "src/data/themeDomains.js": {
+    "mtime": 1791513207.923297,
+    "seen": 1791513648.2360296,
+    "ast_hash": "cd1c66477dc1605c3775e45347ba9daf",
+    "semantic_hash": ""
+  },
+  "src/hooks/useLocalStorage.js": {
+    "mtime": 1791513524.7895644,
+    "seen": 1791513648.2360308,
+    "ast_hash": "5a12c48bfb7e6f268792f2c9890f5e29",
+    "semantic_hash": ""
+  },
+  "src/lib/themeData.js": {
+    "mtime": 1792069585.003383,
+    "seen": 1792069597.900023,
+    "ast_hash": "e651a15f90e27250cb8147ef6b79a7a1",
+    "semantic_hash": ""
+  },
+  "src/lib/themes.jsx": {
+    "mtime": 1792135581.0531309,
+    "seen": 1792135995.2348304,
+    "ast_hash": "68d2f8200e684548c5b75285efd04454",
+    "semantic_hash": ""
+  },
+  "src/main.jsx": {
+    "mtime": 1792120193.3120775,
+    "seen": 1792120201.5309322,
+    "ast_hash": "d3ceb75963082fa4beb317e60ec8d605",
+    "semantic_hash": ""
+  },
+  "src/pages/BalconiesBasements.jsx": {
+    "mtime": 1792121233.932727,
+    "seen": 1792121240.931295,
+    "ast_hash": "d95a14e3cf8a424970b313d4f48f0ece",
+    "semantic_hash": ""
+  },
+  "src/pages/Communication.jsx": {
+    "mtime": 1792135988.2443109,
+    "seen": 1792135995.2348335,
+    "ast_hash": "5a5d5c2d1118e35b63aa1a57a474bbed",
+    "semantic_hash": ""
+  },
+  "src/pages/ConnectThemes.jsx": {
+    "mtime": 1792121233.9534502,
+    "seen": 1792121240.9312968,
+    "ast_hash": "ca8aa9ce8c1951ccd86e0477ec3b83c2",
+    "semantic_hash": ""
+  },
+  "src/pages/Home.jsx": {
+    "mtime": 1792069585.0028777,
+    "seen": 1792069597.9000294,
+    "ast_hash": "d5408f8146df07360d8852a3624f334f",
+    "semantic_hash": ""
+  },
+  "src/pages/SoundDesk.jsx": {
+    "mtime": 1792121233.9354072,
+    "seen": 1792121240.9312983,
+    "ast_hash": "68d88d21fb0dd97a7c587fa43a27aa92",
+    "semantic_hash": ""
+  },
+  "src/pages/StrengthsStrategy.jsx": {
+    "mtime": 1792121233.9359078,
+    "seen": 1792121240.931299,
+    "ast_hash": "5dd6f3ca70f320a83f3eb98db435662e",
+    "semantic_hash": ""
+  },
+  "src/pages/ThemeDynamics.jsx": {
+    "mtime": 1792136629.9512193,
+    "seen": 1792136669.0787961,
+    "ast_hash": "2916b967628303471582b75e75df63f5",
+    "semantic_hash": ""
+  },
+  "tailwind.config.js": {
+    "mtime": 1792121303.4717252,
+    "seen": 1792135995.23484,
+    "ast_hash": "57e87ee37b0883893c6284b64d20dbcc",
+    "semantic_hash": ""
+  },
+  "vite.config.js": {
+    "mtime": 1791512920.3228362,
+    "seen": 1791513648.2360399,
+    "ast_hash": "a447d663634011a9587af9e97d288026",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1791512920.308297,
+    "seen": 1791513648.2360406,
+    "ast_hash": "a35031cdadd3d3add78fbf2beb5b4b0a",
+    "semantic_hash": ""
+  },
+  "index.html": {
+    "mtime": 1791607900.448414,
+    "seen": 1791608029.6307876,
+    "ast_hash": "db92322b5bba736be63324b9940bc4f7",
+    "semantic_hash": ""
+  },
+  "tasks/soundboard-handover.md": {
+    "mtime": 1791512920.3218312,
+    "seen": 1791513648.236042,
+    "ast_hash": "d49745011201834e8ea1cd16f6f376ab",
+    "semantic_hash": ""
+  },
+  "public/vite.svg": {
+    "mtime": 1791512920.310297,
+    "seen": 1791513648.2360427,
+    "ast_hash": "8e3a10e157f75ada21ab742c022d5430",
+    "semantic_hash": ""
+  },
+  "src/assets/react.svg": {
+    "mtime": 1791512920.3118048,
+    "seen": 1791513648.2360435,
+    "ast_hash": "f0402b67b6ce880f65666bb49e841696",
+    "semantic_hash": ""
+  },
+  "src/data/themeDescriptions.js": {
+    "mtime": 1791607883.1329112,
+    "seen": 1791608029.6307683,
+    "ast_hash": "8ab01c5a84939379630334ea292241dc",
+    "semantic_hash": ""
+  },
+  "src/Auth.jsx": {
+    "mtime": 1792120366.596703,
+    "seen": 1792120373.3819053,
+    "ast_hash": "bb3e2f3ca9e271918a01afaeed10d138",
+    "semantic_hash": ""
+  },
+  "src/lib/supabase.js": {
+    "mtime": 1792120366.5962048,
+    "seen": 1792120373.3819149,
+    "ast_hash": "92c5b6733390dd45cad0834f21744656",
+    "semantic_hash": ""
+  },
+  "src/lib/print.js": {
+    "mtime": 1792121232.4984663,
+    "seen": 1792121240.9312897,
+    "ast_hash": "9c9233336dda442fb9aa630fc8583af1",
+    "semantic_hash": ""
+  }
+}

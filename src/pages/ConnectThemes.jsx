@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Download, RotateCcw } from "lucide-react";
 import traits from "@/data/theme-traits.json";
 import { PageHeader, PrintHeader, TM } from "@/lib/themes";
+import { printPdf } from "@/lib/print";
 import { listJoin } from "@/lib/themeData";
 
 const ROUNDS = {
@@ -70,7 +71,12 @@ export default function ConnectThemes({ themes, participant }) {
         title="Connect With Your Themes"
         sub="Match each theme with what it brings and what it needs to be at its best."
       />
-      <PrintHeader activity="Connect With Your Themes" title="What my themes bring and need" participant={participant} />
+      <PrintHeader
+        activity="Connect With Your Themes"
+        title="What my themes bring and need"
+        participant={participant}
+        intro="Understanding what you bring, and what you need to thrive, can help you navigate both work and life with greater confidence and intention. This document gives you language for the contribution you make to teams, projects, relationships and everyday situations, as well as the conditions that help you feel energised and engaged. Use it to communicate what others can count on you for, and what helps you be at your best."
+      />
 
       <div className="steps no-print">
         {["What I Bring", "What I Need", "My Summary"].map((s, i) => (
@@ -179,7 +185,7 @@ export default function ConnectThemes({ themes, participant }) {
           <button className="btn" onClick={() => startRound("bring")}>
             <RotateCcw size={15} /> Play again
           </button>
-          <button className="btn primary" onClick={() => window.print()}>
+          <button className="btn primary" onClick={() => printPdf(participant, "Connect With Your Themes")}>
             <Download size={15} /> Download one-page PDF
           </button>
         </div>

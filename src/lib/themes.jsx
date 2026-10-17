@@ -31,15 +31,15 @@ export function PageHeader({ eyebrow, title, sub, children }) {
 }
 
 // Header shown only on printed one-page PDFs.
-export function PrintHeader({ activity, title, participant }) {
+export function PrintHeader({ activity, title, participant, intro }) {
   return (
     <div className="print-only print-head">
+      <div className="print-brand">Strengths Exploration Hub</div>
       <div className="eyebrow">{activity}</div>
       <h1>{title}</h1>
-      <p>
-        {participant ? `${participant} · ` : ""}A strengths-based summary from
-        the coaching conversation.
-      </p>
+      {participant && <p className="print-name">{participant}{intro ? "," : ""}</p>}
+      {intro && <p className="print-intro">{intro}</p>}
+      {!intro && <p>A strengths-based summary from the coaching conversation.</p>}
     </div>
   );
 }
