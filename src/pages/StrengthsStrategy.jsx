@@ -65,12 +65,15 @@ export default function StrengthsStrategy({ themes, participant }) {
         e.stopPropagation();
         if (lane && held && held !== t.key) place(held, lane, t.key);
         else setHeld(held === t.key ? null : t.key);
+<<<<<<< HEAD
       }}
       // The two clicks pick up and put down the same tile, so a double-click only opens the description.
       onDoubleClick={(e) => {
         e.stopPropagation();
         setHeld(null);
         setInfo(t);
+=======
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
       }}
     >
       <TM>{t.name}</TM>
@@ -112,6 +115,7 @@ export default function StrengthsStrategy({ themes, participant }) {
             ["importance", "How important is this to you?"],
             ["motivation", "How motivated are you to take action?"],
           ].map(([k, q]) => (
+<<<<<<< HEAD
             <div key={k} className="rating">
               <span id={`rating-${k}`}>{q}</span>
               {/* Segmented 1–10 scale: dots up to the chosen value are filled. */}
@@ -130,6 +134,20 @@ export default function StrengthsStrategy({ themes, participant }) {
               </div>
               <b>{rating[k]}/10</b>
             </div>
+=======
+            <label key={k} className="rating">
+              <span>{q}</span>
+              <input
+                className="no-print"
+                type="range"
+                min={1}
+                max={10}
+                value={rating[k]}
+                onChange={(e) => setRating((r) => ({ ...r, [k]: +e.target.value }))}
+              />
+              <b>{rating[k]}/10</b>
+            </label>
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
           ))}
         </div>
       </section>

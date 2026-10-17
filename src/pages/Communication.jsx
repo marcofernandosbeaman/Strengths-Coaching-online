@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 import { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Download, X } from "lucide-react";
+=======
+import { useEffect, useState } from "react";
+import { ArrowLeft, ArrowRight, Download } from "lucide-react";
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
 import { COMMUNICATION_STYLES } from "@/data/communicationStyles";
 import { PageHeader, PrintHeader, ThemeChip, TM } from "@/lib/themes";
 import { printPdf } from "@/lib/print";
@@ -69,9 +74,13 @@ export default function Communication({ themes, participant }) {
   const [state, setState] = useState(blank);
   const [si, setSi] = useState(0);
   const [step, setStep] = useState(0);
+<<<<<<< HEAD
   const [peek, setPeek] = useState(null); // theme whose description card is open on the question screen
   const [showAll, setShowAll] = useState(false); // theme cards: first five, rest tucked underneath
   const beforeClick = useRef(null); // selection before the first click of a possible double-click
+=======
+  const [peek, setPeek] = useState(null); // { theme, x, y } for the double-click description card
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
   const x = state[si];
   const name = (k) => themes.find((t) => t.key === k);
 
@@ -116,7 +125,11 @@ export default function Communication({ themes, participant }) {
             <span className="pill">Stage 1 of 2 · Explore</span>
           </div>
           <div className="comm-grid">
+<<<<<<< HEAD
             {(showAll ? themes : themes.slice(0, 5)).map((t) => (
+=======
+            {themes.map((t) => (
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
               <CommCard key={t.key} theme={t} />
             ))}
           </div>
@@ -191,6 +204,7 @@ export default function Communication({ themes, participant }) {
                         key={t.key}
                         className={`pick-tile ${(step === 0 ? x.themes : x.dial).includes(t.key) ? "on" : ""}`}
                         style={{ "--accent": t.colour }}
+<<<<<<< HEAD
                         onClick={(e) => {
                           if (e.detail > 1) return; // second click of a double-click
                           beforeClick.current = { themes: x.themes, dial: x.dial };
@@ -201,6 +215,13 @@ export default function Communication({ themes, participant }) {
                         onDoubleClick={() => {
                           if (beforeClick.current) update(beforeClick.current);
                           setPeek(peek?.key === t.key ? null : t);
+=======
+                        // Second click of a double-click is ignored so it does not undo the first.
+                        onClick={(e) => e.detail < 2 && togglePick(t.key)}
+                        onDoubleClick={(e) => {
+                          const r = e.currentTarget.getBoundingClientRect();
+                          setPeek({ theme: t, x: r.left, y: r.bottom + 8 });
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
                         }}
                       >
                         <TM>{t.name}</TM>
@@ -208,6 +229,7 @@ export default function Communication({ themes, participant }) {
                     ))}
                   </div>
                   {step === 0 && <div className="counter">{x.themes.length} of 3 selected</div>}
+<<<<<<< HEAD
                   {peek && (
                     <div className="peek">
                       <button className="peek-close" aria-label="Close description" onClick={() => setPeek(null)}>
@@ -216,6 +238,9 @@ export default function Communication({ themes, participant }) {
                       <CommCard theme={peek} aria-live="polite" />
                     </div>
                   )}
+=======
+                  {peek && <Peek {...peek} onClose={() => setPeek(null)} />}
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
                 </>
               )}
               {step > 0 && (
@@ -334,3 +359,30 @@ function CommCard({ theme: t, ...rest }) {
   );
 }
 
+<<<<<<< HEAD
+=======
+// Floating description card under the double-clicked tile; closes on outside click, scroll or Escape.
+function Peek({ theme, x, y, onClose }) {
+  useEffect(() => {
+    const close = (e) => (e.type !== "keydown" || e.key === "Escape") && onClose();
+    const t = setTimeout(() => document.addEventListener("click", close));
+    window.addEventListener("keydown", close);
+    window.addEventListener("scroll", close, true);
+    return () => {
+      clearTimeout(t);
+      document.removeEventListener("click", close);
+      window.removeEventListener("keydown", close);
+      window.removeEventListener("scroll", close, true);
+    };
+  }, [theme, onClose]);
+  return (
+    <CommCard
+      theme={theme}
+      className="card accent-card peek"
+      role="dialog"
+      aria-label={theme.name}
+      style={{ "--accent": theme.colour, left: Math.min(x, window.innerWidth - 300), top: y }}
+    />
+  );
+}
+>>>>>>> b68bc504439f9419961c190acd5a30e4ba42cfa9
