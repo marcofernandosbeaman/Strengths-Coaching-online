@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ArrowLeft, Check, Download, ListChecks, Sun, Sunset } from "lucide-react";
 import { BALCONY_BASEMENT } from "@/data/balconyBasement";
-import { PageHeader, PrintHeader, TM } from "@/lib/themes";
+import { DotScale, PageHeader, PrintHeader, TM } from "@/lib/themes";
 import { printPdf } from "@/lib/print";
 
 const QUESTIONS = [
@@ -250,32 +250,16 @@ export default function BalconiesBasements({ themes: allThemes, participant }) {
 
 // 1–10, Basement on the left to Balcony on the right. Unrated until the user touches it.
 function Rating({ value, onChange }) {
-  const pick = (e) => onChange(+e.currentTarget.value);
   return (
     <div className="bb-rating">
-      <label htmlFor="bb-rating">Where is this strength operating most often right now?</label>
-      <input
-        id="bb-rating"
-        type="range"
-        min={1}
-        max={10}
-        step={1}
-        value={value || 5}
-        className={value ? "" : "unset"}
-        onChange={pick}
-        onClick={pick}
-        aria-valuetext={value ? `${value} out of 10` : "Not rated"}
+      <span id="bb-rating" className="bb-question">Where is this strength operating most often right now?</span>
+      <DotScale
+        value={value || 0}
+        onChange={onChange}
+        labelledBy="bb-rating"
+        low="1 = Mostly Basement"
+        high="10 = Mostly Balcony"
       />
-      <div className="bb-ends">
-        <span>
-          <b>1 = Mostly Basement</b>
-          Mostly operating from the Basement
-        </span>
-        <span>
-          <b>10 = Mostly Balcony</b>
-          Mostly operating from the Balcony
-        </span>
-      </div>
       <p className="bb-current">Current Rating: {value ? `${value}/10` : "Not rated yet"}</p>
     </div>
   );

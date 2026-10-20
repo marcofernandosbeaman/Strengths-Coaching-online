@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronDown, ChevronUp, Download, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Download, X } from "lucide-react";
 import { COMMUNICATION_STYLES } from "@/data/communicationStyles";
 import { PageHeader, PrintHeader, ThemeChip, TM } from "@/lib/themes";
 import { printPdf } from "@/lib/print";
@@ -70,7 +70,7 @@ export default function Communication({ themes, participant }) {
   const [si, setSi] = useState(0);
   const [step, setStep] = useState(0);
   const [peek, setPeek] = useState(null); // theme whose description card is open on the question screen
-  const [showAll, setShowAll] = useState(false); // theme cards: first five, rest tucked underneath
+  const [flipped, setFlipped] = useState([]); // columns showing their tucked card (themes 6–10) in front
   const beforeClick = useRef(null); // selection before the first click of a possible double-click
   const x = state[si];
   const name = (k) => themes.find((t) => t.key === k);
@@ -111,32 +111,36 @@ export default function Communication({ themes, participant }) {
           <div className="section-head">
             <div>
               <h2>Your communication themes</h2>
-              <p>Read and compare how each of your themes shapes the way you communicate.</p>
+              <p>
+                Read and compare how each of your themes shapes the way you communicate.
+                {themes.length > 5 && " Click the card edge underneath to see your next themes."}
+              </p>
             </div>
             <span className="pill">Stage 1 of 2 · Explore</span>
           </div>
           <div className="comm-grid">
-            {(showAll ? themes : themes.slice(0, 5)).map((t) => (
-              <CommCard key={t.key} theme={t} />
-            ))}
+            {/* Themes 6–10 sit tucked under 1–5; clicking the edge brings that card to the front. */}
+            {themes.slice(0, 5).map((t, i) => {
+              const back = themes[i + 5];
+              const [front, under] = flipped.includes(i) ? [back, t] : [t, back];
+              return (
+                <div key={t.key} className="comm-stack">
+                  <CommCard theme={front} />
+                  {under && (
+                    <button
+                      className="comm-tuck"
+                      style={{ "--accent": under.colour }}
+                      title={`Show ${under.name}`}
+                      aria-label={`Show ${under.name}`}
+                      onClick={() =>
+                        setFlipped((f) => (f.includes(i) ? f.filter((x) => x !== i) : [...f, i]))
+                      }
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
-          {themes.length > 5 && (
-            <button
-              className={`comm-more ${showAll ? "open" : ""}`}
-              aria-expanded={showAll}
-              onClick={() => setShowAll(!showAll)}
-            >
-              {showAll ? (
-                <>
-                  Show fewer <ChevronUp size={14} />
-                </>
-              ) : (
-                <>
-                  Show {themes.length - 5} more themes <ChevronDown size={14} />
-                </>
-              )}
-            </button>
-          )}
           <div className="panel launch">
             <div>
               <h3>Explore your communication in different situations</h3>

@@ -1,5 +1,5 @@
 {
-  "0": "ConnectThemes.jsx",
+  "0": "BalconiesBasements.jsx",
   "1": "package.json",
   "2": "postcss.config.js",
   "3": "Communication.jsx",
@@ -12,5 +12,6 @@
   "10": "React + Vite",
   "11": "App.jsx",
   "12": "scripts",
-  "13": "SoundDesk.jsx"
+  "13": "SoundDesk.jsx",
+  "14": "ThemeDynamics.jsx"
 }

@@ -9,7 +9,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "printpdf()",
       "source_file": "src/lib/print.js",
@@ -21,11 +21,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "listjoin()",
       "source_file": "src/lib/themeData.js",
       "source_location": "L17"
+    },
+    {
+      "id": "src_lib_themes_dotscale",
+      "label": "DotScale()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "dotscale()",
+      "source_file": "src/lib/themes.jsx",
+      "source_location": "L13"
     },
     {
       "id": "src_lib_themes_pageheader",
@@ -33,11 +45,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "pageheader()",
       "source_file": "src/lib/themes.jsx",
-      "source_location": "L20"
+      "source_location": "L49"
     },
     {
       "id": "src_lib_themes_printheader",
@@ -45,23 +57,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "printheader()",
       "source_file": "src/lib/themes.jsx",
-      "source_location": "L34"
-    },
-    {
-      "id": "src_lib_themes_themechip",
-      "label": "ThemeChip()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "themechip()",
-      "source_file": "src/lib/themes.jsx",
-      "source_location": "L11"
+      "source_location": "L63"
     },
     {
       "id": "src_lib_themes_tm",
@@ -69,11 +69,59 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "tm()",
       "source_file": "src/lib/themes.jsx",
       "source_location": "L2"
+    },
+    {
+      "id": "src_pages_balconiesbasements_balconiesbasements",
+      "label": "BalconiesBasements()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconiesbasements()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L24"
+    },
+    {
+      "id": "src_pages_balconiesbasements_balconybasement",
+      "label": "BalconyBasement()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconybasement()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L268"
+    },
+    {
+      "id": "src_pages_balconiesbasements_explored",
+      "label": "explored()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "explored()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_pages_balconiesbasements_rating",
+      "label": "Rating()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "rating()",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L252"
     },
     {
       "id": "src_pages_connectthemes_confetti",
@@ -81,7 +129,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "confetti",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -93,7 +141,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "connectthemes()",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -105,7 +153,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "hash()",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -117,7 +165,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "shuffled()",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -129,7 +177,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "statement()",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -141,35 +189,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "strengthsstrategy()",
       "source_file": "src/pages/StrengthsStrategy.jsx",
       "source_location": "L15"
-    },
-    {
-      "id": "src_pages_themedynamics_crust",
-      "label": "crust()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "crust()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_pages_themedynamics_polar",
-      "label": "polar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "polar()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L8"
     },
     {
       "id": "src_pages_themedynamics_themedynamics",
@@ -177,35 +201,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "themedynamics()",
       "source_file": "src/pages/ThemeDynamics.jsx",
       "source_location": "L24"
-    },
-    {
-      "id": "src_pages_themedynamics_wedge",
-      "label": "wedge()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "wedge()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L12"
-    },
-    {
-      "id": "src_pages_themedynamics_wheel",
-      "label": "Wheel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "wheel()",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L227"
     },
     {
       "id": "src_app_app",
@@ -328,52 +328,28 @@
       "source_location": "L15"
     },
     {
-      "id": "src_pages_balconiesbasements_balconiesbasements",
-      "label": "BalconiesBasements()",
+      "id": "src_lib_themedata_validcount",
+      "label": "validCount()",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
+      "community": 11,
+      "community_name": "App.jsx",
       "file_type": "code",
-      "norm_label": "balconiesbasements()",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L24"
+      "norm_label": "validcount()",
+      "source_file": "src/lib/themeData.js",
+      "source_location": "L6"
     },
     {
-      "id": "src_pages_balconiesbasements_balconybasement",
-      "label": "BalconyBasement()",
+      "id": "src_pages_home_home",
+      "label": "Home()",
       "_callable": true,
       "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
+      "community": 11,
+      "community_name": "App.jsx",
       "file_type": "code",
-      "norm_label": "balconybasement()",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L284"
-    },
-    {
-      "id": "src_pages_balconiesbasements_explored",
-      "label": "explored()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "explored()",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "src_pages_balconiesbasements_rating",
-      "label": "Rating()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "rating()",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L252"
+      "norm_label": "home()",
+      "source_file": "src/pages/Home.jsx",
+      "source_location": "L40"
     },
     {
       "id": "src_pages_sounddesk_actions",
@@ -385,7 +361,7 @@
       "file_type": "code",
       "norm_label": "actions()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L221"
+      "source_location": "L214"
     },
     {
       "id": "src_pages_sounddesk_channel",
@@ -397,7 +373,7 @@
       "file_type": "code",
       "norm_label": "channel()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L234"
+      "source_location": "L227"
     },
     {
       "id": "src_pages_sounddesk_clamp",
@@ -433,7 +409,7 @@
       "file_type": "code",
       "norm_label": "minidesk()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L307"
+      "source_location": "L300"
     },
     {
       "id": "src_pages_sounddesk_reflection",
@@ -445,7 +421,7 @@
       "file_type": "code",
       "norm_label": "reflection()",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L329"
+      "source_location": "L322"
     },
     {
       "id": "src_pages_sounddesk_sounddesk",
@@ -458,6 +434,66 @@
       "norm_label": "sounddesk()",
       "source_file": "src/pages/SoundDesk.jsx",
       "source_location": "L38"
+    },
+    {
+      "id": "src_pages_themedynamics_crust",
+      "label": "crust()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "crust()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_pages_themedynamics_polar",
+      "label": "polar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "polar()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_pages_themedynamics_wedge",
+      "label": "wedge()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "wedge()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "src_pages_themedynamics_wheel",
+      "label": "Wheel()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "wheel()",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L220"
+    },
+    {
+      "id": "src_lib_themes_themechip",
+      "label": "ThemeChip()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "Communication.jsx",
+      "file_type": "code",
+      "norm_label": "themechip()",
+      "source_file": "src/lib/themes.jsx",
+      "source_location": "L40"
     },
     {
       "id": "src_pages_communication_blank",
@@ -481,7 +517,7 @@
       "file_type": "code",
       "norm_label": "commcard()",
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L323"
+      "source_location": "L327"
     },
     {
       "id": "src_pages_communication_communication",
@@ -505,31 +541,7 @@
       "file_type": "code",
       "norm_label": "preview()",
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L314"
-    },
-    {
-      "id": "src_lib_themedata_validcount",
-      "label": "validCount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Home.jsx",
-      "file_type": "code",
-      "norm_label": "validcount()",
-      "source_file": "src/lib/themeData.js",
-      "source_location": "L6"
-    },
-    {
-      "id": "src_pages_home_home",
-      "label": "Home()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "Home.jsx",
-      "file_type": "code",
-      "norm_label": "home()",
-      "source_file": "src/pages/Home.jsx",
-      "source_location": "L40"
+      "source_location": "L318"
     },
     {
       "id": "src_pages_home_logoupload",
@@ -541,7 +553,7 @@
       "file_type": "code",
       "norm_label": "logoupload()",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L241"
+      "source_location": "L246"
     },
     {
       "id": "src_pages_home_readlogo",
@@ -553,7 +565,7 @@
       "file_type": "code",
       "norm_label": "readlogo()",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L220"
+      "source_location": "L225"
     },
     {
       "id": "src_pages_home_themesearch",
@@ -565,14 +577,14 @@
       "file_type": "code",
       "norm_label": "themesearch()",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L156"
+      "source_location": "L162"
     },
     {
       "id": "src_lib_print",
       "label": "print.js",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "print.js",
       "source_file": "src/lib/print.js",
@@ -583,18 +595,62 @@
       "label": "themes.jsx",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "themes.jsx",
       "source_file": "src/lib/themes.jsx",
       "source_location": "L1"
     },
     {
+      "id": "src_pages_balconiesbasements",
+      "label": "BalconiesBasements.jsx",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "balconiesbasements.jsx",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_balconiesbasements_blankrow",
+      "label": "blankRow",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "blankrow",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L21"
+    },
+    {
+      "id": "src_pages_balconiesbasements_coaching",
+      "label": "COACHING",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "coaching",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L14"
+    },
+    {
+      "id": "src_pages_balconiesbasements_questions",
+      "label": "QUESTIONS",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "BalconiesBasements.jsx",
+      "file_type": "code",
+      "norm_label": "questions",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L7"
+    },
+    {
       "id": "src_pages_connectthemes",
       "label": "ConnectThemes.jsx",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "connectthemes.jsx",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -605,7 +661,7 @@
       "label": "ROUNDS",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "rounds",
       "source_file": "src/pages/ConnectThemes.jsx",
@@ -616,7 +672,7 @@
       "label": "StrengthsStrategy.jsx",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "strengthsstrategy.jsx",
       "source_file": "src/pages/StrengthsStrategy.jsx",
@@ -627,44 +683,11 @@
       "label": "LANES",
       "_origin": "ast",
       "community": 0,
-      "community_name": "ConnectThemes.jsx",
+      "community_name": "BalconiesBasements.jsx",
       "file_type": "code",
       "norm_label": "lanes",
       "source_file": "src/pages/StrengthsStrategy.jsx",
       "source_location": "L8"
-    },
-    {
-      "id": "src_pages_themedynamics",
-      "label": "ThemeDynamics.jsx",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "themedynamics.jsx",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_themedynamics_blank",
-      "label": "blank",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "code",
-      "norm_label": "blank",
-      "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "ConnectThemes.jsx",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L22"
     },
     {
       "id": "eslint_config",
@@ -1254,50 +1277,6 @@
       "source_location": "L3"
     },
     {
-      "id": "src_pages_balconiesbasements",
-      "label": "BalconiesBasements.jsx",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "balconiesbasements.jsx",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_pages_balconiesbasements_blankrow",
-      "label": "blankRow",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "blankrow",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L21"
-    },
-    {
-      "id": "src_pages_balconiesbasements_coaching",
-      "label": "COACHING",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "coaching",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L14"
-    },
-    {
-      "id": "src_pages_balconiesbasements_questions",
-      "label": "QUESTIONS",
-      "_origin": "ast",
-      "community": 13,
-      "community_name": "SoundDesk.jsx",
-      "file_type": "code",
-      "norm_label": "questions",
-      "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L7"
-    },
-    {
       "id": "src_pages_sounddesk",
       "label": "SoundDesk.jsx",
       "_origin": "ast",
@@ -1329,6 +1308,28 @@
       "norm_label": "questions",
       "source_file": "src/pages/SoundDesk.jsx",
       "source_location": "L13"
+    },
+    {
+      "id": "src_pages_themedynamics",
+      "label": "ThemeDynamics.jsx",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "themedynamics.jsx",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_pages_themedynamics_blank",
+      "label": "blank",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "ThemeDynamics.jsx",
+      "file_type": "code",
+      "norm_label": "blank",
+      "source_file": "src/pages/ThemeDynamics.jsx",
+      "source_location": "L22"
     },
     {
       "id": "postcss_config",
@@ -1989,7 +1990,7 @@
       "file_type": "code",
       "norm_label": "logo_types",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L217"
+      "source_location": "L222"
     },
     {
       "id": "src_pages_home_why",
@@ -2001,6 +2002,17 @@
       "norm_label": "why",
       "source_file": "src/pages/Home.jsx",
       "source_location": "L7"
+    },
+    {
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "Home.jsx",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L22"
     },
     {
       "id": "tailwindcss",
@@ -2117,7 +2129,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L305",
+      "source_location": "L309",
       "weight": 1.0
     },
     {
@@ -2129,7 +2141,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ConnectThemes.jsx",
-      "source_location": "L132",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -2141,7 +2153,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ConnectThemes.jsx",
-      "source_location": "L188",
+      "source_location": "L199",
       "weight": 1.0
     },
     {
@@ -2189,7 +2201,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L254",
+      "source_location": "L259",
       "weight": 1.0
     },
     {
@@ -2201,7 +2213,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L212",
+      "source_location": "L205",
       "weight": 1.0
     },
     {
@@ -2237,7 +2249,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/StrengthsStrategy.jsx",
-      "source_location": "L206",
+      "source_location": "L196",
       "weight": 1.0
     },
     {
@@ -2273,7 +2285,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L215",
+      "source_location": "L207",
       "weight": 1.0
     },
     {
@@ -2297,7 +2309,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L234",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -2309,7 +2321,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L242",
+      "source_location": "L235",
       "weight": 1.0
     },
     {
@@ -2321,7 +2333,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L243",
+      "source_location": "L236",
       "weight": 1.0
     },
     {
@@ -2794,6 +2806,18 @@
     },
     {
       "source": "src_pages_balconiesbasements",
+      "target": "src_lib_themes_dotscale",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/BalconiesBasements.jsx",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_balconiesbasements",
       "target": "src_lib_themes_pageheader",
       "relation": "imports",
       "_origin": "ast",
@@ -3046,6 +3070,18 @@
     },
     {
       "source": "src_pages_sounddesk",
+      "target": "src_lib_themes_dotscale",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/SoundDesk.jsx",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_sounddesk",
       "target": "src_lib_themes_pageheader",
       "relation": "imports",
       "_origin": "ast",
@@ -3102,6 +3138,18 @@
       "context": "import",
       "source_file": "src/pages/StrengthsStrategy.jsx",
       "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_strengthsstrategy",
+      "target": "src_lib_themes_dotscale",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/pages/StrengthsStrategy.jsx",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -4721,13 +4769,13 @@
     },
     {
       "source": "src_lib_themes",
-      "target": "src_lib_themes_themechip",
+      "target": "src_lib_themes_dotscale",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/themes.jsx",
-      "source_location": "L11",
+      "source_location": "L13",
       "weight": 1.0
     },
     {
@@ -4743,13 +4791,24 @@
     },
     {
       "source": "src_lib_themes",
+      "target": "src_lib_themes_themechip",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/lib/themes.jsx",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "src_lib_themes",
       "target": "src_lib_themes_pageheader",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/themes.jsx",
-      "source_location": "L20",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -4760,7 +4819,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/lib/themes.jsx",
-      "source_location": "L34",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -4826,7 +4885,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/BalconiesBasements.jsx",
-      "source_location": "L284",
+      "source_location": "L268",
       "weight": 1.0
     },
     {
@@ -4848,7 +4907,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L314",
+      "source_location": "L318",
       "weight": 1.0
     },
     {
@@ -4859,7 +4918,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Communication.jsx",
-      "source_location": "L323",
+      "source_location": "L327",
       "weight": 1.0
     },
     {
@@ -4952,17 +5011,6 @@
     },
     {
       "source": "src_pages_connectthemes",
-      "target": "src_pages_connectthemes_confetti",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/pages/ConnectThemes.jsx",
-      "source_location": "L197",
-      "weight": 1.0
-    },
-    {
-      "source": "src_pages_connectthemes",
       "target": "src_pages_connectthemes_hash",
       "relation": "contains",
       "_origin": "ast",
@@ -4970,6 +5018,17 @@
       "confidence_score": 1.0,
       "source_file": "src/pages/ConnectThemes.jsx",
       "source_location": "L20",
+      "weight": 1.0
+    },
+    {
+      "source": "src_pages_connectthemes",
+      "target": "src_pages_connectthemes_confetti",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/pages/ConnectThemes.jsx",
+      "source_location": "L208",
       "weight": 1.0
     },
     {
@@ -5013,7 +5072,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L156",
+      "source_location": "L162",
       "weight": 1.0
     },
     {
@@ -5024,7 +5083,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L217",
+      "source_location": "L222",
       "weight": 1.0
     },
     {
@@ -5035,7 +5094,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L220",
+      "source_location": "L225",
       "weight": 1.0
     },
     {
@@ -5046,7 +5105,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/Home.jsx",
-      "source_location": "L241",
+      "source_location": "L246",
       "weight": 1.0
     },
     {
@@ -5090,7 +5149,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L221",
+      "source_location": "L214",
       "weight": 1.0
     },
     {
@@ -5101,7 +5160,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L234",
+      "source_location": "L227",
       "weight": 1.0
     },
     {
@@ -5112,7 +5171,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L307",
+      "source_location": "L300",
       "weight": 1.0
     },
     {
@@ -5123,7 +5182,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/SoundDesk.jsx",
-      "source_location": "L329",
+      "source_location": "L322",
       "weight": 1.0
     },
     {
@@ -5233,7 +5292,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/pages/ThemeDynamics.jsx",
-      "source_location": "L227",
+      "source_location": "L220",
       "weight": 1.0
     },
     {
@@ -5509,5 +5568,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "1cb54f2bbcab41abcbd323363d02a6bd545c182a"
+  "built_at_commit": "47cd02a7ceae4a0ca35fb49cfd2ecd1de4a07e01"
 }

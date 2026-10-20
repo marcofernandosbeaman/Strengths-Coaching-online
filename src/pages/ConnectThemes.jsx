@@ -98,6 +98,17 @@ export default function ConnectThemes({ themes, participant }) {
             <span className="pill">
               {matched.length} of {themes.length} connected
             </span>
+            {/* TESTING ONLY: remove this button before launch. */}
+            <button
+              className="btn"
+              onClick={() => {
+                setMatched(themes.map((t) => t.key));
+                setSelected(null);
+                setTimeout(() => setPhase(round === "bring" ? "between" : "summary"), 300);
+              }}
+            >
+              Auto-match all (test)
+            </button>
           </div>
           <div className={`match-msg ${message.tone}`}>{message.text}</div>
           <div className="match-area">

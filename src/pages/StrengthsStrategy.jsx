@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Download } from "lucide-react";
 import { THEME_DESCRIPTIONS } from "@/data/themeDescriptions";
-import { PageHeader, PrintHeader, TM } from "@/lib/themes";
+import { DotScale, PageHeader, PrintHeader, TM } from "@/lib/themes";
 import { printPdf } from "@/lib/print";
 import { listJoin } from "@/lib/themeData";
 
@@ -114,21 +114,11 @@ export default function StrengthsStrategy({ themes, participant }) {
           ].map(([k, q]) => (
             <div key={k} className="rating">
               <span id={`rating-${k}`}>{q}</span>
-              {/* Segmented 1–10 scale: dots up to the chosen value are filled. */}
-              <div className="dots" role="radiogroup" aria-labelledby={`rating-${k}`}>
-                {Array.from({ length: 10 }, (_, i) => i + 1).map((n) => (
-                  <button
-                    key={n}
-                    type="button"
-                    role="radio"
-                    aria-checked={rating[k] === n}
-                    aria-label={`${n} out of 10`}
-                    className={n <= rating[k] ? "on" : ""}
-                    onClick={() => setRating((r) => ({ ...r, [k]: n }))}
-                  />
-                ))}
-              </div>
-              <b>{rating[k]}/10</b>
+              <DotScale
+                value={rating[k]}
+                onChange={(n) => setRating((r) => ({ ...r, [k]: n }))}
+                labelledBy={`rating-${k}`}
+              />
             </div>
           ))}
         </div>

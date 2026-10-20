@@ -47,7 +47,7 @@ export default function ThemeDynamics({ themes: allThemes, participant }) {
       alert("Select at least one theme, name the package and capture what becomes possible.");
       return;
     }
-    setPackages((p) => [...p, { ...form, themes: pickedThemes }]);
+    setPackages((p) => [...p, { ...form, themes: pickedThemes, wheel: themes }]); // wheel: snapshot for the card
     setPicked([]);
     setForm(blank);
     setSaved(true);
@@ -61,15 +61,6 @@ export default function ThemeDynamics({ themes: allThemes, participant }) {
         sub="Explore how your themes work together, complement one another and contribute to success."
       />
       <PrintHeader activity="Theme Dynamics" title="My explored theme packages" participant={participant} />
-
-      {themes.length >= 2 && (
-        <div className="print-only print-wheel">
-          <Wheel themes={themes} picked={[]}>
-            <b>Theme package</b>
-            <span>Top {themes.length}</span>
-          </Wheel>
-        </div>
-      )}
 
       <section className="split no-print">
         <article className="panel">
@@ -192,6 +183,7 @@ export default function ThemeDynamics({ themes: allThemes, participant }) {
                   "--bar": `linear-gradient(90deg, ${p.themes.map((t) => t.colour).join(", ")}${p.themes.length === 1 ? `, ${p.themes[0].colour}` : ""})`,
                 }}
               >
+                <Wheel themes={p.wheel} picked={p.themes.map((t) => t.key)} mini />
                 <h3>{p.name}</h3>
                 <div className="combo">
                   {p.themes.map((t, j) => (
@@ -222,12 +214,13 @@ export default function ThemeDynamics({ themes: allThemes, participant }) {
   );
 }
 
-// Theme wheel: coloured outer edge on every slice, white centre circle drawn in the SVG so it
-// stays exactly centred at any size or zoom; the HTML label sits inside the same square.
-function Wheel({ themes, picked, onToggle, onInfo, children }) {
+// Theme wheel: grey slices whose edge takes the theme colour on hover or selection. The white centre
+// circle is drawn in the SVG so it stays exactly centred at any size or zoom; the HTML label sits
+// inside the same square. `mini` renders a static snapshot of a saved package (cards and PDF).
+function Wheel({ themes, picked, onToggle, onInfo, mini, children }) {
   const span = 360 / Math.max(themes.length, 1);
   return (
-    <div className={`wheel ${themes.length > 6 ? "dense" : ""}`}>
+    <div className={`wheel ${themes.length > 6 ? "dense" : ""} ${mini ? "mini" : ""}`} aria-hidden={mini || undefined}>
       <svg viewBox="0 0 472 472">
         {themes.map((t, i) => {
           const s = i * span;
@@ -240,7 +233,7 @@ function Wheel({ themes, picked, onToggle, onInfo, children }) {
               onDoubleClick={onInfo && (() => onInfo(t))}
             >
               <path className="wedge" d={wedge(s, s + span)} />
-              <path className="crust" d={crust(s, s + span)} stroke={t.colour} />
+              <path className="crust" d={crust(s, s + span)} style={{ "--c": t.colour }} />
               <text x={p.x} y={p.y + 4}>
                 {t.name}®
               </text>
@@ -249,7 +242,7 @@ function Wheel({ themes, picked, onToggle, onInfo, children }) {
         })}
         <circle className="hub" cx={C} cy={C} r={80} />
       </svg>
-      <div className="wheel-centre">{children}</div>
+      {!mini && <div className="wheel-centre">{children}</div>}
     </div>
   );
 }

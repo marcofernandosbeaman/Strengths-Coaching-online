@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import { RotateCcw, Save, Download, ChevronLeft, Check } from "lucide-react";
 import { BALCONY_BASEMENT } from "@/data/balconyBasement";
 import { THEME_DESCRIPTIONS } from "@/data/themeDescriptions";
-import { PageHeader, PrintHeader, TM } from "@/lib/themes";
+import { DotScale, PageHeader, PrintHeader, TM } from "@/lib/themes";
 import { printPdf } from "@/lib/print";
 
 const KNOB = 84; // knob height in px, matches .knob in CSS
@@ -149,23 +149,16 @@ export default function SoundDesk({ themes, participant }) {
               </label>
               <p className="fader-prompt">{Q.fader} Move the faders on the desk.</p>
               {Q.rating && (
-                <label>
-                  {Q.rating} (optional)
-                  <span className="scale">
-                    <small>1 = Rarely</small>
-                    <input
-                      type="range"
-                      min={1}
-                      max={10}
-                      value={draft.rating || 5}
-                      onChange={(e) => setDraft((d) => ({ ...d, rating: +e.target.value }))}
-                      // The thumb starts at 5 but stays unrated; a click records 5 without moving it.
-                      onClick={(e) => setDraft((d) => ({ ...d, rating: +e.target.value }))}
-                    />
-                    <small>10 = Very often</small>
-                    <b>{draft.rating ? `${draft.rating}/10` : "–"}</b>
-                  </span>
-                </label>
+                <div className="field">
+                  <span id="sd-rating">{Q.rating} (optional)</span>
+                  <DotScale
+                    value={draft.rating || 0}
+                    onChange={(rating) => setDraft((d) => ({ ...d, rating }))}
+                    labelledBy="sd-rating"
+                    low="1 = Rarely"
+                    high="10 = Very often"
+                  />
+                </div>
               )}
               {Q.followUp && (
                 <label>

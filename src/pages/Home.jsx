@@ -72,48 +72,54 @@ export default function Home({
           </label>
         </div>
 
-        <div className="select-box">
-          <h2>Select your themes</h2>
-          <p className="muted">
-            Choose 1 theme, or 5 to {MAX_THEMES} themes in the order they appear in your report.
-          </p>
-          <ThemeSearch selected={selected} setSelected={setSelected} />
-          <div className="label">Your selected themes</div>
-          <div className="tray">
-            {themes.length === 0 && (
-              <span className="tray-empty">
-                <Info size={14} /> No themes selected yet.
-              </span>
-            )}
-            {themes.map((t, i) => (
-              <span key={t.key} className="tray-chip" style={{ "--accent": t.colour }}>
-                <b>{i + 1}</b>
-                <TM>{t.name}</TM>
-                <button
-                  aria-label={`Remove ${t.name}`}
-                  onClick={() => setSelected((p) => p.filter((k) => k !== t.key))}
-                >
-                  <X size={13} />
-                </button>
-              </span>
-            ))}
-            {themes.length > 0 && (
-              <button className="link" onClick={() => setSelected([])}>
-                Clear all
-              </button>
-            )}
+        <div className="select-row">
+          <div className="select-box">
+            <h2>Select your themes</h2>
+            <p className="muted">
+              Choose 1 theme, or 5 to {MAX_THEMES} themes in the order they appear in your report.
+            </p>
+            <ThemeSearch selected={selected} setSelected={setSelected} />
           </div>
-          <div className="select-foot">
-            <span className={`select-count ${n && !ok ? "warn" : ""}`} aria-live="polite">
-              {n === 0
-                ? `0 of ${MAX_THEMES} selected`
-                : ok
-                  ? `${n} selected, ready to explore`
-                  : `${n} selected. Choose 1 theme, or 5 to ${MAX_THEMES}.`}
-            </span>
-            <button className="btn primary" disabled={!ok} onClick={() => go(firstActivity)}>
-              Start exploring <ArrowRight size={15} />
-            </button>
+
+          {/* Separate box so the selection stays visible while the dropdown is open. */}
+          <div className="select-box selected-box">
+            <h2>Your selected themes</h2>
+            <div className="tray">
+              {themes.length === 0 && (
+                <span className="tray-empty">
+                  <Info size={14} /> No themes selected yet.
+                </span>
+              )}
+              {themes.map((t, i) => (
+                <span key={t.key} className="tray-chip" style={{ "--accent": t.colour }}>
+                  <b>{i + 1}</b>
+                  <TM>{t.name}</TM>
+                  <button
+                    aria-label={`Remove ${t.name}`}
+                    onClick={() => setSelected((p) => p.filter((k) => k !== t.key))}
+                  >
+                    <X size={13} />
+                  </button>
+                </span>
+              ))}
+              {themes.length > 0 && (
+                <button className="link" onClick={() => setSelected([])}>
+                  Clear all
+                </button>
+              )}
+            </div>
+            <div className="select-foot">
+              <span className={`select-count ${n && !ok ? "warn" : ""}`} aria-live="polite">
+                {n === 0
+                  ? `0 of ${MAX_THEMES} selected`
+                  : ok
+                    ? `${n} selected, ready to explore`
+                    : `${n} selected. Choose 1 theme, or 5 to ${MAX_THEMES}.`}
+              </span>
+              <button className="btn primary" disabled={!ok} onClick={() => go(firstActivity)}>
+                Start exploring <ArrowRight size={15} />
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -202,7 +208,6 @@ function ThemeSearch({ selected, setSelected }) {
                 onClick={() => add(s.key)}
               >
                 <TM>{s.name}</TM>
-                <small>{s.blurb}</small>
               </button>
             </li>
           ))}
